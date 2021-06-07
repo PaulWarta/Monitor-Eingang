@@ -1,0 +1,133 @@
+body {
+    position: relative;
+    width: 2160px;
+    height: 3840px;
+    
+    background: #393939;
+}
+
+div {
+    border-radius: 10px;
+}
+
+.Uhrzeit {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    width: 1016px;
+    height: 300px;
+    left: 230px;
+    top: 85px;
+    
+    background: #575757;
+    box-shadow: 10px 32px 37px rgba(22, 22, 22, 0.57);
+}
+
+#Uhrzeit {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 186px;
+    line-height: 218px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #d5d5d5;
+
+}
+
+.Weather {
+    position: absolute;
+    width: 609px;
+    height: 301px;
+    left: 1321px;
+    top: 85px;
+    
+    background: #575757;
+
+    background: #575757;
+    box-shadow: 10px 32px 37px rgba(22, 22, 22, 0.57);
+}
+
+.Ticker {
+    position: absolute;
+    width: 1703px;
+    height: 659px;
+    left: 227px;
+    top: 462px;
+    
+    background: #575757;
+
+    background: #575757;
+    box-shadow: 10px 32px 37px rgba(22, 22, 22, 0.57);
+}
+
+.Stundenplan {
+    position: absolute;
+    width: 1700px;
+    height: 2527px;
+    left: 230px;
+    top: 1198px;
+    
+    background: #575757;
+    mix-blend-mode: normal;
+
+    background: #575757;
+    box-shadow: 10px 32px 37px rgba(22, 22, 22, 0.57);
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+
+    background: #575757;
+    box-shadow: 10px 32px 37px rgba(22, 22, 22, 0.57);
+}
+
+#icon-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 170px;
+    height: 170px;
+    top: 0;
+    left: 439px;
+}
+
+#icon {
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    left: 439px;
+    top: 0px;
+
+    src: url();
+}
+
+#Temperature {
+    position: absolute;
+    width: 310px;
+    height: 92px;
+    left: 90px;
+    top: 104px;
+    margin: 0;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 186px;
+    line-height: 182px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #d5d5d5;
+}
