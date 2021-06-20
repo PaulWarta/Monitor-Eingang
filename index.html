@@ -7,35 +7,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="server.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="Uhrzeit">
         <h1 id="Uhrzeit"></h1>
-        <script>
-            setInterval(
-                function req_time() {
-                var time = new Date;
-                if (time.getMinutes().toString() < 10) {
-                    element = document.getElementById("Uhrzeit").innerText = time.getHours().toString() + ":0" + time.getMinutes().toString();
-                } else {
-                    element = document.getElementById("Uhrzeit").innerText = time.getHours().toString() + ":" + time.getMinutes().toString();
-                }
-            }, 1000);
-        </script>
     </div>
-    <div class="Weather">
-        <div id="icon-container">
-            <img id="icon">
-        </div>
+    <div class="Wetter">
         <h1 id="Temperature"></h1>
+        <img id="icon" src="">
     </div>
-    <div class="Ticker">
-    </div>
-    <div class="Stundenplan">
-        <iframe src="https://www.tanzhaus-muelheim.de" frameborder="0"></iframe>
-    </div>
+    <div class="Navigation"></div>
+    <div class="Stundenplan"></div>
+    <div class="News"></div>
+    <div class="Poster"></div>
     <script>
+        setInterval(
+            function req_time() {
+            var time = new Date;
+            if (time.getMinutes().toString() < 10) {
+                element = document.getElementById("Uhrzeit").innerText = time.getHours().toString() + ":0" + time.getMinutes().toString();
+            } else {
+                element = document.getElementById("Uhrzeit").innerText = time.getHours().toString() + ":" + time.getMinutes().toString();
+            }
+        }, 1000);
+    </script>
+    <script defer>
         function fetch_weather () {
             var xhttp = new XMLHttpRequest;
             xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=muelheim&units=metric&appid=2e9c5036920dde9cf253e5f1581328c2", false);
@@ -52,6 +50,7 @@
             document.getElementById("icon").src = url;
             document.getElementById("Temperature").innerText = Math.round(temp.toString()).toString() + "\xB0";
         }
+        setInterval(fetch_weather(), 60000)
         fetch_weather();
     </script>
 </body>

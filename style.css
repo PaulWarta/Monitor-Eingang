@@ -1,133 +1,91 @@
 body {
-    position: relative;
-    width: 2160px;
-    height: 3840px;
-    
-    background: #393939;
-}
-
-div {
-    border-radius: 10px;
-}
-
-.Uhrzeit {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    
     position: absolute;
-    width: 1016px;
-    height: 300px;
-    left: 230px;
-    top: 85px;
-    
-    background: #575757;
-    box-shadow: 10px 32px 37px rgba(22, 22, 22, 0.57);
-}
-
-#Uhrzeit {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 186px;
-    line-height: 218px;
-    /* identical to box height */
-    
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    color:#d5d5d5;
-
-}
-
-.Weather {
-    position: absolute;
-    width: 609px;
-    height: 301px;
-    left: 1321px;
-    top: 85px;
-    
-    background: #575757;
-
-    background: #575757;
-    box-shadow: 10px 32px 37px rgba(22, 22, 22, 0.57);
-}
-
-.Ticker {
-    position: absolute;
-    width: 1703px;
-    height: 659px;
-    left: 227px;
-    top: 462px;
-    
-    background: #575757;
-
-    background: #575757;
-    box-shadow: 10px 32px 37px rgba(22, 22, 22, 0.57);
-}
-
-.Stundenplan {
-    position: absolute;
-    width: 1700px;
-    height: 2527px;
-    left: 230px;
-    top: 1198px;
-    
-    background: #575757;
-    mix-blend-mode: normal;
-
-    background: #575757;
-    box-shadow: 10px 32px 37px rgba(22, 22, 22, 0.57);
-}
-
-iframe {
-    width: 100%;
-    height: 100%;
-
-    background: #575757;
-    box-shadow: 10px 32px 37px rgba(22, 22, 22, 0.57);
-}
-
-#icon-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    width: 170px;
-    height: 170px;
-    top: 0;
-    left: 439px;
-}
-
-#icon {
-    position: absolute;
-    width: 170px;
-    height: 170px;
-    left: 439px;
+    width: 1080px;
+    height: 1920px;
+    left: 0px;
     top: 0px;
 
-    src: url();
+    background-image: url("./Gradient.png");
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 120px;
+    color: #f0e6d5;
 }
 
 #Temperature {
     position: absolute;
-    width: 310px;
-    height: 92px;
-    left: 90px;
-    top: 104px;
+    width: 328px;
+    height: 0px;
     margin: 0;
+    font-size: 120px;
+}
+
+#icon {
+    position: absolute;
+    width: 160px;
+    height: 160px;
     
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 186px;
-    line-height: 182px;
+}
+
+div {
+    background: rgba(255, 255, 255, 0.11);
+    box-shadow: 13px 14px 56px rgba(0, 0, 0, 0.1);
+    border-radius: 28px;
+}
+
+.Wetter {
     display: flex;
     align-items: center;
-    text-align: center;
-    
-    color: #d5d5d5;
+    justify-content: center;
+    position: absolute;
+    width: 400px;
+    height: 178px;
+    left: 588px;
+    top: 141px;
+}
+
+.Navigation {
+    position: absolute;
+    width: 398px;
+    height: 394px;
+    left: 590px;
+    top: 414px;    
+}
+
+.Uhrzeit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 400px;
+    height: 266.67px;
+    left: 93px;
+    top: 141px;
+}
+
+.Stundenplan {
+    position: absolute;
+    width: 400px;
+    height: 800px;
+    left: 93px;
+    top: 503px;    
+}
+
+.News {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    left: 588px;
+    top: 903px;
+}
+
+.Poster {
+    position: absolute;
+    width: 895px;
+    height: 382px;
+    left: 93px;
+    top: 1398px;
 }
