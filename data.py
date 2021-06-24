@@ -1,5 +1,5 @@
 import requests
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, time, timedelta
 import json
 url = "https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data"
 api_key = "db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da"
@@ -29,5 +29,8 @@ for i in range(len(response)):
     timetable[i]["room"] = current_response["room"]
 
 timetable = json.dumps(timetable)
-print(timetable)
+
+f = open("timetable.txt", "w")
+f.write(timetable)
+f.close()
     

@@ -9,23 +9,39 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 </head>
 <body>
+    <svg width="1080" height="1872" viewBox="0 0 1080 1872" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_f)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M843.148 638.922C843.233 726.344 687.134 814.368 639.017 911.149C561.036 1068 682.908 1250.1 488.781 1351.69C302.95 1448.94 238.472 1254.65 135.82 1174.49C71.4284 1124.2 9.16549 1073.53 19.5381 985.243C30.3939 892.848 98.4396 795.911 191.071 704.244C323.808 572.891 467.012 389.921 638.491 372.743C810.402 355.521 843.023 511.007 843.148 638.922Z" fill="#BC29C8" fill-opacity="0.79"/>
+        </g>
+        <defs>
+        <filter id="filter0_f" x="-523" y="-96" width="2032.11" height="1967.32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+        <feGaussianBlur stdDeviation="196.5" result="effect1_foregroundBlur"/>
+        </filter>
+        </defs>
+    </svg>
     <div class="Uhrzeit">
         <h1 id="Uhrzeit"></h1>
     </div>
     <div class="Wetter">
         <h1 id="Temperature"></h1>
-        <img id="icon" src="">
+        <span class="iconify" data-inline="false" data-icon="" id="icon"></span>
     </div>
     <div class="Navigation">
-        <h2>Schön, <br> dass Ihr <br> wider da seid!</h2>
+        <h2>Schön, <br> dass Ihr <br> wieder da seid!</h2>
     </div>
-    <div class="Stundenplan"></div>
+    <div id="Stundenplan">
+    </div>
     <div class="News">
         <h3>
             Wenn ihr wollt, könnt Ihr <br> euch gerne hier <br> zusätzlich anmelden:
         </h3>
+        <img src="Luca_QR_plain1.png" id="Luca">
+        <img src="./Warnapp_QR_plain1.png" id="Warnapp">
     </div>
     <div class="Poster"></div>
     <script>
@@ -40,6 +56,26 @@
         }, 1000);
     </script>
     <script defer>
+        const icon_library = {
+            "01d" : "sunny",
+            "01n" : "moon",
+            "02d" : "partly-cloudy-day",
+            "02n" : "partly-cloudy-night",
+            "03d" : "cloudy",
+            "03n" : "cloudy",
+            "04d" : "cloudy",
+            "04n" : "cloudy",
+            "09d" : "rain",
+            "09n" : "rain",
+            "10d" : "rain-showers-day",
+            "10n" : "rain-showers-night",
+            "11d" : "thunderstorm",
+            "11n" : "thunderstorm",
+            "13d" : "snow",
+            "13n" : "snow",
+            "50d" : "fog",
+            "50n" : "fog"
+        }
         function fetch_weather () {
             var xhttp = new XMLHttpRequest;
             xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=muelheim&units=metric&appid=2e9c5036920dde9cf253e5f1581328c2", false);
@@ -48,16 +84,40 @@
             let ic = data.weather;
             ic = ic[0];
             ic = ic.icon;
-            console.log(ic);
-            let url = "http://openweathermap.org/img/wn/" + ic.toString() + "@2x.png";
+            let url = "fluent:weather-" + icon_library[ic] + "-48-regular"
             let temp = data.main;
             temp = temp.temp;
-            console.log("URL: " + url);
-            document.getElementById("icon").src = url;
+            document.getElementById("icon").setAttribute("data-icon", url);
             document.getElementById("Temperature").innerText = Math.round(temp.toString()).toString() + "\xB0";
         }
         setInterval(fetch_weather(), 60000)
         fetch_weather();
+    </script>
+    <script defer>
+        let xhttp = new XMLHttpRequest;
+        xhttp.open("GET", "timetable.txt", false);
+        xhttp.send();
+        let response = xhttp.responseText;
+        let data = JSON.parse(response);
+        let len = Object.keys(data).length;
+        for (i = 0; i < 5; i++) {
+            let start = data[i]["start"];
+            let end = data[i]["end"];
+            let name = data[i]["name"];
+            let teacher = data[i]["teacher"];
+            let room = data[i]["room"];
+            let place_of_image = "./images/" + "Luca" + ".png";
+
+            let Std_container = document.createElement("div").setAttribute("class", "StdContainer");
+            let DescContainer = document.createElement("div").setAttribute("class", "DescContainer");
+
+            let teacher_element = document.createElement("img"); teacher_element.setAttribute("src", place_of_image); teacher_element.setAttribute("class", "Profilbild"); 
+            Std_container.appendChild(teacher_element);
+            let kurs_element = document.createElement("h4"); kurs_element.innerText = name; DescContainer.appendChild(kurs_element);
+            let kurs_description = document.createElement("h5"); kurs_description.innerText = room + teacher; DescContainer.appendChild(kurs_description);
+
+            let Stundenplan = document.getElementById("Stundenplan"); Stundenplan.appendChild(Std_container); Stundenplan.appendChild(DescContainer);
+        }
     </script>
 </body>
 </html>

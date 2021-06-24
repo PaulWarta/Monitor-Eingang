@@ -1,11 +1,15 @@
+html {
+    background: linear-gradient(174.19deg, #E6BC16 2.77%, #D53215 84.89%);
+}
+
 body {
     position: absolute;
     width: 1080px;
     height: 1920px;
     left: 0px;
     top: 0px;
-
-    background-image: url("./Gradient.png");
+    
+    background: linear-gradient(174.19deg, #E6BC16 2.77%, #D53215 84.89%);
 }
 
 h1 {
@@ -13,6 +17,22 @@ h1 {
     font-weight: 900;
     font-size: 120px;
     color: #f0e6d5;
+}
+
+#Luca {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 28px;
+    top: 179px;
+}
+
+#Warnapp {
+    position: absolute;
+    width: 149px;
+    height: 150px;
+    left: 223px;
+    top: 179px;
 }
 
 #Temperature {
@@ -35,20 +55,27 @@ h1 {
     color: #F9F5E5;
 }
 
+.Stundenplan-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
 #icon {
     position: absolute;
     width: 143px;
     height: 143px;
     left: 234px;
-    top: 13px;
-    
+    top: 13px; 
+    color: #F9F5E5;
 }
 
 div {
-    background: radial-gradient(208.58% 342.24% at 9.5% -16.31%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.0756) 56.96%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.11);
+    background: radial-gradient(208.58% 342.24% at 9.5% -16.31%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.235) 56.96%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.11);
     box-shadow: 13px 14px 56px rgba(0, 0, 0, 0.1);
     border-radius: 28px;
 }
+
 
 .Wetter {
     position: absolute;
@@ -56,6 +83,7 @@ div {
     height: 266.67px;
     left: 93px;
     top: 141px;
+    
 }
 
 .Navigation {
@@ -95,7 +123,7 @@ h2 {
     top: 141px;
 }
 
-.Stundenplan {
+#Stundenplan {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,6 +150,7 @@ h3 {
     height: 113px;
     left: 32px;
     top: 41px;
+    margin: 0;
     
     font-family: Roboto;
     font-style: normal;
@@ -143,4 +172,36 @@ h3 {
     height: 382px;
     left: 93px;
     top: 1398px;
+}
+
+.Profilbild {
+    width: 70px;
+    height: 70px;
+
+    filter: drop-shadow(13px 14px 56px rgba(0, 0, 0, 0.1));
+    border-radius: 28px;
+
+    margin: 0px 15px;
+}
+
+.StdConatiner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    
+    width: 328px;
+    height: 78px;
+    margin: 30px 0px;
+}
+
+.DescContainer {
+    width: 238px;
+    height: 70px;
+
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow: 13px 14px 56px rgba(0, 0, 0, 0.1);
+    border-radius: 28px;
+    margin: 0px 15px;
 }
