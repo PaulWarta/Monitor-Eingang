@@ -17,33 +17,44 @@ h1 {
 
 #Temperature {
     position: absolute;
-    width: 328px;
-    height: 0px;
+    width: 267px;
+    height: 178px;
+    left: 0px;
+    top: 89px;
     margin: 0;
-    font-size: 120px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 127px;
+    line-height: 149px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    
+    color: #F9F5E5;
 }
 
 #icon {
     position: absolute;
-    width: 160px;
-    height: 160px;
+    width: 143px;
+    height: 143px;
+    left: 234px;
+    top: 13px;
     
 }
 
 div {
-    background: rgba(255, 255, 255, 0.11);
+    background: radial-gradient(208.58% 342.24% at 9.5% -16.31%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.0756) 56.96%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.11);
     box-shadow: 13px 14px 56px rgba(0, 0, 0, 0.1);
     border-radius: 28px;
 }
 
 .Wetter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     width: 400px;
-    height: 178px;
-    left: 588px;
+    height: 266.67px;
+    left: 93px;
     top: 141px;
 }
 
@@ -52,7 +63,25 @@ div {
     width: 398px;
     height: 394px;
     left: 590px;
-    top: 414px;    
+    top: 414px;  
+}
+
+h2 {
+    position: absolute;
+    width: 398px;
+    height: 394px;
+    margin: 0;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 78px;
+    line-height: 91px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #F9F5E5;
 }
 
 .Uhrzeit {
@@ -61,12 +90,17 @@ div {
     align-items: center;
     position: absolute;
     width: 400px;
-    height: 266.67px;
-    left: 93px;
+    height: 178px;
+    left: 588px;
     top: 141px;
 }
 
 .Stundenplan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0px 0px;
+    
     position: absolute;
     width: 400px;
     height: 800px;
@@ -80,6 +114,27 @@ div {
     height: 400px;
     left: 588px;
     top: 903px;
+}
+
+h3 {
+    position: absolute;
+    width: 344px;
+    height: 113px;
+    left: 32px;
+    top: 41px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    /* Text Colour */
+    
+    color: #F9F5E5;
 }
 
 .Poster {
