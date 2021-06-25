@@ -55,12 +55,6 @@ h1 {
     color: #F9F5E5;
 }
 
-.Stundenplan-container {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-}
-
 #icon {
     position: absolute;
     width: 143px;
@@ -127,13 +121,19 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 0px 0px;
+    padding: 30px 0px 0px;
     
     position: absolute;
     width: 400px;
     height: 800px;
     left: 93px;
-    top: 503px;    
+    top: 503px;
+    
+    /* Box */
+    
+    background: radial-gradient(208.58% 342.24% at 9.5% -16.31%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.0756) 56.96%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.11);
+    box-shadow: 13px 14px 56px rgba(0, 0, 0, 0.1);
+    border-radius: 28px;   
 }
 
 .News {
@@ -175,33 +175,88 @@ h3 {
 }
 
 .Profilbild {
+    position: static;
     width: 70px;
     height: 70px;
-
+    left: 7px;
     filter: drop-shadow(13px 14px 56px rgba(0, 0, 0, 0.1));
-    border-radius: 28px;
-
-    margin: 0px 15px;
+    border-radius: 40px;
 }
 
-.StdConatiner {
+.StdContainer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 4px 0px;
+    padding: 4px 4px;
+
+    background: none;
+    box-shadow: none;
+
+    border-radius: 28px;
     
+    position: static;
     width: 328px;
     height: 78px;
-    margin: 30px 0px;
+    left: 36px;
+    margin: 15px 0px;
+    padding: 0px 14px;
 }
 
 .DescContainer {
+    position: static;
     width: 238px;
     height: 70px;
-
-    background: rgba(255, 255, 255, 0.16);
-    box-shadow: 13px 14px 56px rgba(0, 0, 0, 0.1);
+    
+    background: rgba(255, 255, 255, 0.11);
     border-radius: 28px;
-    margin: 0px 15px;
+}
+
+h4 {
+    position: static;
+    width: 100%;
+    height: 40px;
+    left: -0.5px;
+    top: 0px;
+
+    margin-top: 2px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 34px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    
+    /* Text Colour */
+    
+    color: #F9F5E5;
+}
+
+h5 {
+    position: static;
+    width: 238px;
+    height: 24px;
+    left: -0.5px;
+    top: 41px;
+
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: 0;
+    /* Text Colour */
+
+    color: #F9F5E5;
 }
