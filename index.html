@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <svg width="1080" height="1778" viewBox="0 0 1080 1778" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +79,7 @@
         }
         function fetch_weather () {
             var xhttp = new XMLHttpRequest;
-            xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=muelheim&units=metric&appid=2e9c5036920dde9cf253e5f1581328c2", false);
+            xhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=muelheim&units=metric&appid=2e9c5036920dde9cf253e5f1581328c2", false);
             xhttp.send();
             let data = JSON.parse(xhttp.responseText);
             let ic = data.weather;
@@ -122,6 +123,9 @@
             Std_container.appendChild(DescContainer); 
             Stundenplan.appendChild(Std_container);
         }
+    </script>
+    <script defer>
+        
     </script>
 </body>
 </html>
