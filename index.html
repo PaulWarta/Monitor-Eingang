@@ -36,6 +36,7 @@
         <h2>Schön, <br> dass Ihr <br> wieder da seid!</h2>
     </div>
     <div id="Stundenplan">
+        <ul id="Stundenplancontainer"></ul>
     </div>
     <div class="News">
         <h3>
@@ -44,7 +45,9 @@
         <img src="Luca_QR_plain1.png" id="Luca">
         <img src="./Warnapp_QR_plain1.png" id="Warnapp">
     </div>
-    <div class="Poster"></div>
+    <div class="Poster">
+        <button id="test_animation" style="width: 50px; height: 50px;">Test animation</button>
+    </div>
     <script>
         setInterval(
             function req_time() {
@@ -96,7 +99,7 @@
     </script>
     <script defer>
         let xhttp = new XMLHttpRequest;
-        xhttp.open("GET", "timetable.txt", false);
+        xhttp.open("GET", "./timetable.txt", false);
         xhttp.send();
         let response = xhttp.responseText;
         let data = JSON.parse(response);
@@ -111,8 +114,8 @@
             let room = data[j]["room"];
             let place_of_image = "./images/" + "Luca" + ".png";
 
-            let Stundenplan = document.getElementById("Stundenplan");
-            let Std_container = document.createElement("div")
+            let Stundenplan = document.getElementById("Stundenplancontainer");
+            let Std_container = document.createElement("li")
             Std_container.setAttribute("class", "StdContainer");
 
             let DescContainer = document.createElement("div"); DescContainer.setAttribute("class", "DescContainer");
@@ -125,7 +128,9 @@
         }
     </script>
     <script defer>
-        
+        $("#test_animation").click(function () {
+            $("#Stundenplancontainer").animate({top: "-=108px"}, 400);
+        });
     </script>
 </body>
 </html>

@@ -16,7 +16,7 @@
     "2": {
         "start": "17:15",
         "end": "18:15",
-        "name": "Formation HipHop Ryu",
+        "name": "Formation Ryu",
         "teacher": "Coach",
         "room": "Saal 5"
     },
