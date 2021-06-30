@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
@@ -34,7 +34,7 @@
         <img src="Luca_QR_plain1.png" id="Luca">
         <img src="./Warnapp_QR_plain1.png" id="Warnapp">
     </div>
-    <div class="Poster"></div>
+    <div class="Poster"><button style="height: 200px; width: 200px" onclick=move_up()>Press me</button></div>
     <script>
         setInterval(
             function req_time() {
@@ -93,20 +93,10 @@
         fetch_weather();
     </script>
     <script defer>
-        let now1 = Date.now();
-        let timestamp = Math.round(((parseInt(now1) + 120) / 1000) - 86400);
-        console.log(timestamp)
-        let parameter = {
-            "apikey" : "db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da",
-            "date" : timestamp,
-            "days" : "2",
-            "programOnlyNew" : "false"
-        }
         let xhttp = new XMLHttpRequest;
-        xhttp.open("GET", "https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", false);
+        xhttp.open("GET", "./timetable.txt", false);
         xhttp.send();
-        let response = xhttp.response;
-        console.log(response)
+        let response = xhttp.responseText;
         let data = JSON.parse(response);
         let len = Object.keys(data).length;
         for (i = 0; i < len; i++) {
@@ -140,11 +130,18 @@
         let now;
         let vanish_list = [];
         let timetableLength;
+        let button_pressed = 0;
+        let length1;
         function CalculateTimesToVanish () {
             if (minutes > 19) {
-                time_to_vanish = hours + ":" + (minutes - 10);
+                time_to_vanish = hours + ":" + (minutes - 10)
+            }
+            else if (minutes > 10) {
+                time_to_vanish = hours + ":0" + (minutes - 10);
+            } else if(minutes == 10) {
+                time_to_vanish = hours + ":00";
             } else {
-                time_to_vanish = (hours) + ":0" + ((minutes + 60) - 10);
+                time_to_vanish = (parseInt(hours) - 1).toString() + ":" + (parseInt(minutes) + 50).toString();
             }
         }
         function getTime () {
@@ -157,21 +154,43 @@
             } else {hours = now.getHours()}
         }
         function Saalbelegung () {
-            current_time = document.getElementById("Uhrzeit").innerText;
             getTime();
             CalculateTimesToVanish();
         }
-        setInterval(Saalbelegung(), 1000);
-        function throwElements() {
+        setInterval(() => {
+            Saalbelegung();
+        }, 1000);
+        function move_up () {
+            $("#Stundenplancontainer").animate({
+                top: "-=108px"
+            }, 600)
+            console.log("moved_up")
+        }
+        setInterval(() => {
+            let time_to_vanish_int = parseInt(time_to_vanish.slice(0,2) + time_to_vanish.slice(3,5));
             timetableLength = document.getElementById("Stundenplancontainer").getElementsByTagName("li").length
+            vanish_list = [];
             for (i = 0; i < timetableLength; i++) {
+                console.log("First Loop executed")
                 let element = document.getElementById(i).innerText;
-                if (time_to_vanish == element.slice(0,5)) {
+                let element_int = parseInt(element.slice(0,2) + element.slice(3,5));
+                if (time_to_vanish_int >= element_int) {
                     vanish_list.push(i);
+                    console.log(vanish_list)
+                }
+                for (j = 0; j < timetableLength; j++) {
+                    console.log("Second loop executed")
+                    length1 = vanish_list.length;
+                    if (button_pressed < length1) {
+                        move_up();
+                        button_pressed++;
+                        console.log("If Condition satisfied, button pressed: " + button_pressed + " length: " + length1)
+                    }
                 }
             }
-        }
-        setInterval(throwElements(), 2000);
+        }, 2000);
+    </script>
+    <script defer>
     </script>
 </body>
 </html>

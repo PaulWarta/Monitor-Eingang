@@ -194,7 +194,7 @@ h3 {
     height: 78px;
     left: 22px;
     top: 40px;
-    margin: 30px 0px;
+    margin: 15px 0px;
 }
 
 .DescContainer {
@@ -211,47 +211,48 @@ h3 {
 
 h4 {
     position: relative;
-    width: 209px;
-    height: 42px;
-    left: 16px;
-    top: 4px;
+    width: 204px;
+    height: 46px;
+    left: 17px;
+    top: 3px;
+    margin: 0;
     
     font-family: Helvetica;
     font-style: normal;
     font-weight: bold;
-    font-size: 28px;
-    line-height: 26px;
+    font-size: 24px;
+    line-height: 20px;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
-    margin: 0;
     
     /* Text Colour */
     
-    color: #F9F5E5;
-    
+    color: #F9F5E5; 
 }
 
 h5 {
-    position: static;
+    position: relative;
     width: 238px;
     height: 24px;
-    left: -0.5px;
-    top: 41px;
-
+    left: 0px;
+    padding-bottom: 3px;
+    margin: 0;
+    padding: 0;
+    
     font-family: Helvetica;
     font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 18px;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
-    margin: 0;
+    
     /* Text Colour */
-
+    
     color: #F9F5E5;
 }
 
@@ -278,9 +279,9 @@ h6 {
     
     font-family: Helvetica;
     font-style: normal;
-    font-weight: bold;
+    font-weight: normal;
     font-size: 12px;
-    line-height: 26px;
+    line-height: 39px;
     display: flex;
     align-items: center;
     text-align: center;
