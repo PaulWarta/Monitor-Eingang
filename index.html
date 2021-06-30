@@ -95,6 +95,7 @@
     <script defer>
         let now1 = Date.now();
         let timestamp = Math.round(((parseInt(now1) + 120) / 1000) - 86400);
+        console.log(timestamp)
         let parameter = {
             "apikey" : "db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da",
             "date" : timestamp,
@@ -102,8 +103,7 @@
             "programOnlyNew" : "false"
         }
         let xhttp = new XMLHttpRequest;
-        xhttp.open("POST", "https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", false);
-        xhttp.setRequestHeader("data", parameter);
+        xhttp.open("GET", "https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", false);
         xhttp.send();
         let response = xhttp.response;
         console.log(response)
@@ -141,11 +141,10 @@
         let vanish_list = [];
         let timetableLength;
         function CalculateTimesToVanish () {
-            hours = "16"; minutes = "15";
-            if (minutes > 20) {
+            if (minutes > 19) {
                 time_to_vanish = hours + ":" + (minutes - 10);
             } else {
-                time_to_vanish = (hours + 1) + ":0" + ((minutes + 60) - 10);
+                time_to_vanish = (hours) + ":0" + ((minutes + 60) - 10);
             }
         }
         function getTime () {
@@ -164,7 +163,6 @@
         }
         setInterval(Saalbelegung(), 1000);
         function throwElements() {
-            console.log(time_to_vanish);
             timetableLength = document.getElementById("Stundenplancontainer").getElementsByTagName("li").length
             for (i = 0; i < timetableLength; i++) {
                 let element = document.getElementById(i).innerText;
