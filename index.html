@@ -105,11 +105,11 @@
         xhttp.open("POST", "https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", false);
         xhttp.setRequestHeader("data", parameter);
         xhttp.send();
-        let response = xhttp.responseText;
+        let response = xhttp.response;
+        console.log(response)
         let data = JSON.parse(response);
         let len = Object.keys(data).length;
         for (i = 0; i < len; i++) {
-            console.log(i);
             let start = data[i]["start"];i
             let end = data[i]["end"];
             let name = data[i]["name"];
@@ -170,7 +170,6 @@
                 let element = document.getElementById(i).innerText;
                 if (time_to_vanish == element.slice(0,5)) {
                     vanish_list.push(i);
-                    console.log("Executed")
                 }
             }
         }
