@@ -45,17 +45,23 @@
         <img src="Luca_QR_plain1.png" id="Luca">
         <img src="./Warnapp_QR_plain1.png" id="Warnapp">
     </div>
-    <div class="Poster">
-        <button id="test_animation" style="width: 50px; height: 50px;">Test animation</button>
-    </div>
+    <div class="Poster"></div>
     <script>
         setInterval(
             function req_time() {
             var time = new Date;
             if (time.getMinutes().toString() < 10) {
-                element = document.getElementById("Uhrzeit").innerText = time.getHours().toString() + ":0" + time.getMinutes().toString();
+                if (time.getHours().toString() < 10) {
+                    element = document.getElementById("Uhrzeit").innerText = "0:" +  time.getHours().toString() + ":0" + time.getMinutes().toString();
+                } else {
+                    element = document.getElementById("Uhrzeit").innerText = time.getHours().toString() + ":0" + time.getMinutes().toString();
+                }
             } else {
-                element = document.getElementById("Uhrzeit").innerText = time.getHours().toString() + ":" + time.getMinutes().toString();
+                if (time.getHours().toString() < 10) {
+                    element = document.getElementById("Uhrzeit").innerText = "0:" +  time.getHours().toString() + time.getMinutes().toString();
+                } else {
+                    element = document.getElementById("Uhrzeit").innerText = time.getHours().toString() + ":" + time.getMinutes().toString();
+                }
             }
         }, 1000);
     </script>
@@ -105,13 +111,12 @@
         let data = JSON.parse(response);
         let len = Object.keys(data).length;
         for (i = 0; i < len; i++) {
-            j = (i - (len - 1)) * -1;
-            console.log(j);
-            let start = data[j]["start"];
-            let end = data[j]["end"];
-            let name = data[j]["name"];
-            let teacher = data[j]["teacher"];
-            let room = data[j]["room"];
+            console.log(i);
+            let start = data[i]["start"];i
+            let end = data[i]["end"];
+            let name = data[i]["name"];
+            let teacher = data[i]["teacher"];
+            let room = data[i]["room"];
             let place_of_image = "./images/" + "Luca" + ".png";
 
             let Stundenplan = document.getElementById("Stundenplancontainer");
@@ -120,17 +125,58 @@
 
             let DescContainer = document.createElement("div"); DescContainer.setAttribute("class", "DescContainer");
             let teacher_image = document.createElement("img"); teacher_image.setAttribute("src", place_of_image); teacher_image.setAttribute("class", "Profilbild"); 
+            let zeitfenster = document.createElement("h6"); zeitfenster.setAttribute("id", i); zeitfenster.innerHTML = start + " " + end;
             Std_container.appendChild(teacher_image);
             let kurs_element = document.createElement("h4"); kurs_element.innerText = name; DescContainer.appendChild(kurs_element);
             let kurs_description = document.createElement("h5"); kurs_description.innerText = room + " - " + teacher; DescContainer.appendChild(kurs_description);
-            Std_container.appendChild(DescContainer); 
+            Std_container.appendChild(DescContainer);
+            Std_container.appendChild(zeitfenster);
             Stundenplan.appendChild(Std_container);
         }
     </script>
     <script defer>
-        $("#test_animation").click(function () {
-            $("#Stundenplancontainer").animate({top: "-=108px"}, 400);
-        });
+        let hours;
+        let minutes;
+        let time_to_vanish;
+        let current_element;
+        let now;
+        let vanish_list = [];
+        let timetableLength;
+        function CalculateTimesToVanish () {
+            hours = "16"; minutes = "15";
+            if (minutes > 20) {
+                time_to_vanish = hours + ":" + (minutes - 10);
+            } else {
+                time_to_vanish = (hours + 1) + ":0" + ((minutes + 60) - 10);
+            }
+        }
+        function getTime () {
+            now = new Date;
+            if (now.getMinutes < 10) {
+                minutes = "0" + now.getMinutes();
+            } else {minutes = now.getMinutes()}
+            if (now.getHours() < 10) {
+                hours = "0" + now.getHours();
+            } else {hours = now.getHours()}
+        }
+        function Saalbelegung () {
+            current_time = document.getElementById("Uhrzeit").innerText;
+            getTime();
+            CalculateTimesToVanish();
+        }
+        setInterval(Saalbelegung(), 1000);
+        function throwElements() {
+            console.log(time_to_vanish);
+            timetableLength = document.getElementById("Stundenplancontainer").getElementsByTagName("li").length
+            for (i = 0; i < timetableLength; i++) {
+                let element = document.getElementById(i).innerText;
+                if (time_to_vanish == element.slice(0,5)) {
+                    vanish_list.push(i);
+                    console.log("Executed")
+                }
+            }
+        }
+        setInterval(throwElements(), 2000);
     </script>
 </body>
 </html>

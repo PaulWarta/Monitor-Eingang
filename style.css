@@ -187,19 +187,14 @@ h3 {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 4px;
-
-    background: none;
-    box-shadow: none;
-
-    border-radius: 28px;
+    padding: 4px 3px;
     
     position: static;
-    width: 328px;
+    width: 356px;
     height: 78px;
-    left: 36px;
-    margin: 15px 0px;
-    padding: 0px 14px;
+    left: 22px;
+    top: 40px;
+    margin: 30px 0px;
 }
 
 .DescContainer {
@@ -272,4 +267,24 @@ h5 {
     height: 785px;
     left: 0;
     top: 0;
+}
+
+h6 {
+    position: static;
+    width: 34px;
+    height: 55px;
+    left: 319px;
+    top: 11.5px;
+    
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #F9F5E5;
+    margin: 0px;
 }
