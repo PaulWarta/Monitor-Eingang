@@ -93,8 +93,17 @@
         fetch_weather();
     </script>
     <script defer>
+        let now1 = Date.now();
+        let timestamp = Math.round(((parseInt(now1) + 120) / 1000) - 86400);
+        let parameter = {
+            "apikey" : "db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da",
+            "date" : timestamp,
+            "days" : "2",
+            "programOnlyNew" : "false"
+        }
         let xhttp = new XMLHttpRequest;
-        xhttp.open("GET", "./timetable.txt", false);
+        xhttp.open("POST", "https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", false);
+        xhttp.setRequestHeader("data", parameter);
         xhttp.send();
         let response = xhttp.responseText;
         let data = JSON.parse(response);
