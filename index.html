@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="us">
+<html lang="de" style="background: linear-gradient(174.19deg, #E6BC16 2.77%, #D53215 84.89%); top: 0; left: 0;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Monitor Eingang</title>
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="description" content="Monitor für den Eingangsbereich der Tanzschule mit allen wichtigen Informationen">
 </head>
 <body>
-    <img src="./Blop.png">
+    <img src="./Blop.png" style="width: 1080px; height: 1778px" alt="none">
     <div class="Uhrzeit">
         <h1 id="Uhrzeit"></h1>
     </div>
@@ -31,8 +32,8 @@
         <h3>
             Wenn ihr wollt, könnt Ihr <br> euch gerne hier <br> zusätzlich anmelden:
         </h3>
-        <img src="Luca_QR_plain1.png" id="Luca">
-        <img src="./Warnapp_QR_plain1.png" id="Warnapp">
+        <img src="Luca_QR_plain1.png" alt="Luca QR Code" id="Luca">
+        <img src="./Warnapp_QR_plain1.png" alt="Corona Warn App QR Code" id="Warnapp">
     </div>
     <div class="Poster"><button style="height: 200px; width: 200px" onclick=move_up()>Press me</button></div>
     <script>
@@ -112,7 +113,7 @@
             Std_container.setAttribute("class", "StdContainer");
 
             let DescContainer = document.createElement("div"); DescContainer.setAttribute("class", "DescContainer");
-            let teacher_image = document.createElement("img"); teacher_image.setAttribute("src", place_of_image); teacher_image.setAttribute("class", "Profilbild"); 
+            let teacher_image = document.createElement("img"); teacher_image.setAttribute("src", place_of_image); teacher_image.setAttribute("alt", "none"); teacher_image.setAttribute("class", "Profilbild"); 
             let zeitfenster = document.createElement("h6"); zeitfenster.setAttribute("id", i); zeitfenster.innerHTML = start + " " + end;
             Std_container.appendChild(teacher_image);
             let kurs_element = document.createElement("h4"); kurs_element.innerText = name; DescContainer.appendChild(kurs_element);
