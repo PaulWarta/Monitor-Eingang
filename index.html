@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" style="background: linear-gradient(174.19deg, #E6BC16 2.77%, #D53215 84.89%); top: 0; left: 0;">
+<html lang="de" id="html" style="background: #D53215; top: 0; left: 0;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,8 @@
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="description" content="Monitor für den Eingangsbereich der Tanzschule mit allen wichtigen Informationen">
 </head>
-<body>
-    <img src="./Blop.png" style="width: 1080px; height: 1778px" alt="none">
+<body id="body" style="margin: 0;">
+    <img src="./Blop.png" style="width: 100%; height: 100%; left: 0px; margin: 0px;" alt="none">
     <div class="Uhrzeit">
         <h1 id="Uhrzeit"></h1>
     </div>
@@ -106,16 +106,21 @@
             let name = data[i]["name"];
             let teacher = data[i]["teacher"];
             let room = data[i]["room"];
-            let place_of_image = "./images/" + "Luca" + ".png";
-
+            let place_of_image;
+            try {
+                place_of_image = "./images/" + teacher + ".png";
+            } catch (error) {
+                place_of_image = "./images/" + "Luca.png";
+            }
+            
             let Stundenplan = document.getElementById("Stundenplancontainer");
             let Std_container = document.createElement("li")
             Std_container.setAttribute("class", "StdContainer");
 
             let DescContainer = document.createElement("div"); DescContainer.setAttribute("class", "DescContainer");
-            let teacher_image = document.createElement("img"); teacher_image.setAttribute("src", place_of_image); teacher_image.setAttribute("alt", "none"); teacher_image.setAttribute("class", "Profilbild"); 
+            let teacher_container = document.createElement("div"); teacher_container.setAttribute("class", "teacherContainer"); teacher_container.setAttribute("style", "background: url(" + place_of_image + ");");
             let zeitfenster = document.createElement("h6"); zeitfenster.setAttribute("id", i); zeitfenster.innerHTML = start + " " + end;
-            Std_container.appendChild(teacher_image);
+            Std_container.appendChild(teacher_container);
             let kurs_element = document.createElement("h4"); kurs_element.innerText = name; DescContainer.appendChild(kurs_element);
             let kurs_description = document.createElement("h5"); kurs_description.innerText = room + " - " + teacher; DescContainer.appendChild(kurs_description);
             Std_container.appendChild(DescContainer);
@@ -163,29 +168,24 @@
         }, 1000);
         function move_up () {
             $("#Stundenplancontainer").animate({
-                top: "-=108px"
+                top: "-=112px"
             }, 600)
-            console.log("moved_up")
         }
         setInterval(() => {
             let time_to_vanish_int = parseInt(time_to_vanish.slice(0,2) + time_to_vanish.slice(3,5));
             timetableLength = document.getElementById("Stundenplancontainer").getElementsByTagName("li").length
             vanish_list = [];
             for (i = 0; i < timetableLength; i++) {
-                console.log("First Loop executed")
                 let element = document.getElementById(i).innerText;
                 let element_int = parseInt(element.slice(0,2) + element.slice(3,5));
                 if (time_to_vanish_int >= element_int) {
                     vanish_list.push(i);
-                    console.log(vanish_list)
                 }
                 for (j = 0; j < timetableLength; j++) {
-                    console.log("Second loop executed")
                     length1 = vanish_list.length;
                     if (button_pressed < length1) {
                         move_up();
                         button_pressed++;
-                        console.log("If Condition satisfied, button pressed: " + button_pressed + " length: " + length1)
                     }
                 }
             }

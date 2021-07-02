@@ -1,12 +1,11 @@
 html {
-    background: linear-gradient(174.19deg, #E6BC16 2.77%, #D53215 84.89%);
     top: 0;
     left: 0;
 }
 
 body {
     position: absolute;
-    width: 1080px;
+    min-width: 1080px;
     height: 1920px;
     left: 0px;
     top: 0px;
@@ -173,21 +172,26 @@ h3 {
     top: 1398px;
 }
 
-.Profilbild {
-    position: static;
+.teacherContainer {
+    position: relative;
     width: 70px;
     height: 70px;
-    left: 7px;
-    filter: drop-shadow(13px 14px 56px rgba(0, 0, 0, 0.1));
     border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: rgb(255, 0, 0);
+    padding: 0px;
 }
+
+
 
 .StdContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 3px;
     
     position: static;
     width: 356px;
@@ -195,6 +199,7 @@ h3 {
     left: 22px;
     top: 40px;
     margin: 15px 0px;
+
 }
 
 .DescContainer {
@@ -260,12 +265,12 @@ h5 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px 0px 0px;
+    padding: 0px;
     margin: 0;
     
     position: absolute;
-    width: 400px;
-    height: 785px;
+    width: 100%;
+    height: 100%;
     left: 0;
     top: 0;
 }
