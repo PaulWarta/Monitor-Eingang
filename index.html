@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" id="html" style="background: #D53215; top: 0; left: 0;">
+<html lang="de" id="html" style="top: 0; left: 0;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -106,19 +106,22 @@
             let name = data[i]["name"];
             let teacher = data[i]["teacher"];
             let room = data[i]["room"];
-            let place_of_image;
-            try {
-                place_of_image = "./images/" + teacher + ".png";
-            } catch (error) {
-                place_of_image = "./images/" + "Luca.png";
-            }
+            let place_of_image = "/images/" + teacher + ".png";
+
+            let source_of_image = "https://paulwarta.github.io/Monitor-Eingang" + place_of_image;
+
+            let image = new XMLHttpRequest();
+            image.open("GET", source_of_image, false);
+            image.send();
+            imageOfTeacher = image.responseType
             
             let Stundenplan = document.getElementById("Stundenplancontainer");
             let Std_container = document.createElement("li")
             Std_container.setAttribute("class", "StdContainer");
 
             let DescContainer = document.createElement("div"); DescContainer.setAttribute("class", "DescContainer");
-            let teacher_container = document.createElement("div"); teacher_container.setAttribute("class", "teacherContainer"); teacher_container.setAttribute("style", "background: url(" + place_of_image + ");");
+            let teacher_container = document.createElement("div"); teacher_container.setAttribute("class", "teacherContainer"); 
+            let teacher_image = document.createElement("img"); teacher_image.setAttribute("src", "imageOfTeacher")
             let zeitfenster = document.createElement("h6"); zeitfenster.setAttribute("id", i); zeitfenster.innerHTML = start + " " + end;
             Std_container.appendChild(teacher_container);
             let kurs_element = document.createElement("h4"); kurs_element.innerText = name; DescContainer.appendChild(kurs_element);
@@ -168,7 +171,7 @@
         }, 1000);
         function move_up () {
             $("#Stundenplancontainer").animate({
-                top: "-=112px"
+                top: "-=108px"
             }, 600)
         }
         setInterval(() => {
