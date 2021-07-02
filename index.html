@@ -108,20 +108,13 @@
             let room = data[i]["room"];
             let place_of_image = "/images/" + teacher + ".png";
 
-            let source_of_image = "https://paulwarta.github.io/Monitor-Eingang" + place_of_image;
 
-            let image = new XMLHttpRequest();
-            image.open("GET", source_of_image, false);
-            image.send();
-            imageOfTeacher = image.responseType
-            
             let Stundenplan = document.getElementById("Stundenplancontainer");
             let Std_container = document.createElement("li")
             Std_container.setAttribute("class", "StdContainer");
-
             let DescContainer = document.createElement("div"); DescContainer.setAttribute("class", "DescContainer");
-            let teacher_container = document.createElement("div"); teacher_container.setAttribute("class", "teacherContainer"); 
-            let teacher_image = document.createElement("img"); teacher_image.setAttribute("src", "imageOfTeacher")
+            let teacher_container = document.createElement("div"); teacher_container.setAttribute("class", "teacherContainer"); teacher_container.setAttribute("style", "overflow: hidden"); 
+            let teacher_image = document.createElement("img"); teacher_image.setAttribute("src", place_of_image); teacher_image.setAttribute("alt", "none"); teacher_container.appendChild(teacher_image); console.log(teacher_image)
             let zeitfenster = document.createElement("h6"); zeitfenster.setAttribute("id", i); zeitfenster.innerHTML = start + " " + end;
             Std_container.appendChild(teacher_container);
             let kurs_element = document.createElement("h4"); kurs_element.innerText = name; DescContainer.appendChild(kurs_element);

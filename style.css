@@ -182,7 +182,8 @@ h3 {
     justify-content: center;
     align-items: center;
     
-    background-color: rgb(255, 0, 0);
+    border: 2px solid rgba(255, 255, 255, 0.262);
+    background-color: rgba(255, 255, 255, 0.112);
     padding: 0px;
 }
 
