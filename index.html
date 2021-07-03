@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>Monitor Eingang</title>
-    <meta http-equiv="refresh" content="1200">
+    <meta http-equiv="refresh" content="20">
     <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
@@ -59,7 +59,7 @@
             if (parseInt(time.getHours()) < 10) {proper_hour = "0" + time.getHours().toString()} else {proper_hour = time.getHours().toString()};
             if (parseInt(time.getMinutes()) < 10) {proper_minute = "0" + time.getMinutes().toString()} else {proper_minute = time.getMinutes().toString()};
             Uhrzeit.innerText = proper_hour + ":" + proper_minute;
-        }, 1000);
+        }, 500);
     </script>
     <script defer>
         const icon_library = {
