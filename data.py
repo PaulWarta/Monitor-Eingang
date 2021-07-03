@@ -2,11 +2,11 @@ import requests
 from datetime import date, datetime, time, timedelta
 import json
 url = "https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data"
-api_key = "db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da"
+api_key = "enter here"
 current_date = datetime.now() - timedelta(days=1)
 timestamp = int(current_date.timestamp())
 parameter = {
-    "apikey" : "db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da",
+    "apikey" : "enter here",
     "date" : timestamp,
     "days" : "2",
     "programOnlyNew" : "false"
