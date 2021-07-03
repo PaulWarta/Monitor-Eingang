@@ -13,6 +13,7 @@ body {
     margin: 0;
     
     background: linear-gradient(174.19deg, #E6BC16 2.77%, #D53215 84.89%);
+    overflow: hidden;
 }
 
 h1 {
@@ -65,6 +66,36 @@ h1 {
     left: 234px;
     top: 13px; 
     color: #F9F5E5;
+}
+
+#bannerbuy {
+    position: absolute;
+    width: 1436px;
+    height: 167.3px;
+    left: -187px;
+    top: 1033.14px;
+    z-index: 1;
+    
+    background: #E30000;
+    transform: rotate(-20deg);
+}
+
+.zuverkaufen {
+    position: absolute;
+    width: 1220px;
+    height: 164px;
+    left: 220px;
+    top: -20px;
+    margin: 0;
+    z-index: 2;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 166px;
+    line-height: 195px;
+    
+    color: #FFFFFF;
 }
 
 div {
