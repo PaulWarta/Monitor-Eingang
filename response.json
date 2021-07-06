@@ -47,5 +47,8 @@
         "name": "Gesellschaftstanz-Level 3",
         "teacher": "Thorsten",
         "room": "Saal 1"
+    },
+    "7": {
+        "start" : "test"
     }
 }
