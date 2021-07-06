@@ -1,0 +1,51 @@
+{
+    "0": {
+        "start": "18:15",
+        "end": "19:15",
+        "name": "Zumba MasterClass",
+        "teacher": "Linda",
+        "room": "Saal 3"
+    },
+    "1": {
+        "start": "19:15",
+        "end": "20:25",
+        "name": "Gesellschaftstanz-Level 3",
+        "teacher": "Thorsten",
+        "room": "Saal 2"
+    },
+    "2": {
+        "start": "19:15",
+        "end": "20:15",
+        "name": "Zumba Toning",
+        "teacher": "Claudia",
+        "room": "Saal 3"
+    },
+    "3": {
+        "start": "19:30",
+        "end": "20:40",
+        "name": "Gesellschaftstanz-Level 3",
+        "teacher": "Christopher",
+        "room": "Saal 1"
+    },
+    "4": {
+        "start": "20:15",
+        "end": "21:15",
+        "name": "Zumba MasterClass",
+        "teacher": "Claudia",
+        "room": "Saal 3"
+    },
+    "5": {
+        "start": "20:30",
+        "end": "21:40",
+        "name": "Gesellschaftstanz-Level 1",
+        "teacher": "Linda",
+        "room": "Saal 2"
+    },
+    "6": {
+        "start": "20:45",
+        "end": "21:55",
+        "name": "Gesellschaftstanz-Level 3",
+        "teacher": "Thorsten",
+        "room": "Saal 1"
+    }
+}

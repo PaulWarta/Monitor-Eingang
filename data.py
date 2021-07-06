@@ -2,11 +2,10 @@ import requests
 from datetime import date, datetime, time, timedelta
 import json
 url = "https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data"
-api_key = "enter here"
 current_date = datetime.now() - timedelta(days=1)
 timestamp = int(current_date.timestamp())
 parameter = {
-    "apikey" : "enter here",
+    "apikey" : "db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da",
     "date" : timestamp,
     "days" : "2",
     "programOnlyNew" : "false"
@@ -14,6 +13,7 @@ parameter = {
 response = requests.post(url=url, data=parameter)
 response = response.text
 response = json.loads(response)
+
 
 response = response["content"]
 response = response["events"]
@@ -30,6 +30,7 @@ for i in range(len(response)):
 
 timetable = json.dumps(timetable)
 
+print(timetable)
 f = open("timetable.txt", "w")
 f.write(timetable)
 f.close()
