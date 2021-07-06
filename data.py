@@ -5,7 +5,7 @@ url = "https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data"
 current_date = datetime.now() - timedelta(days=1)
 timestamp = int(current_date.timestamp())
 parameter = {
-    "apikey" : "db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da",
+    "apikey" : "enter key",
     "date" : timestamp,
     "days" : "2",
     "programOnlyNew" : "false"
