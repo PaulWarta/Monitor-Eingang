@@ -14,14 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="description" content="Monitor für den Eingangsbereich der Tanzschule mit allen wichtigen Informationen">
 </head>
-<script defer>
-    setTimeout(() => {
-            console.log("Executed")
-            document.getElementById("banner").setAttribute("style", "display: block; transform: rotate(-20deg); background-color: red; width: 2000px; z-index: 999;position: absolute;left: -458px;top: 825px;");
-            }, 3000); 
-        </script>
 <body id="body" style="margin: 0;">
-    <div id="banner" style="display: none; transform: rotate(-20deg); background-color: red; width: 2000px; z-index: 999;position: absolute;left: -458px;top: 825px;"><h7 style="margin-left: 450px; color: white; font-size: 140px; font-family: Arial, Helvetica, sans-serif; text-align: center;">ZU VERKAUFEN</h7></div>
     <img src="./Blop.png" alt=" " width="100%" height="100%">
     <div class="Uhrzeit">
         <h1 id="Uhrzeit"></h1>
@@ -43,7 +36,10 @@
         <img src="Luca_QR_plain1.png" alt="Luca QR Code" id="Luca">
         <img src="./Warnapp_QR_plain1.png" alt="Corona Warn App QR Code" id="Warnapp">
     </div>
-    <div class="Poster"></div>
+    <div class="Poster_container">
+        <div id="Posters">
+        </div>
+    </div>
     <script>
         let proper_hour;
         let proper_minute;
@@ -51,7 +47,6 @@
             function req_time() {
             let time = new Date();
             let Uhrzeit = document.getElementById("Uhrzeit")
-            console.log()
             if (parseInt(time.getHours()) < 10) {proper_hour = "0" + time.getHours().toString()} else {proper_hour = time.getHours().toString()};
             if (parseInt(time.getMinutes()) < 10) {proper_minute = "0" + time.getMinutes().toString()} else {proper_minute = time.getMinutes().toString()};
             Uhrzeit.innerText = proper_hour + ":" + proper_minute;
@@ -96,6 +91,58 @@
         fetch_weather();
     </script>
     <script defer>
+        let Posters;
+        Posters = new XMLHttpRequest();
+        let index = 0;
+        let image;
+        let status;
+        let Poster_list = document.getElementById("Posters");
+        let status1;
+        let condition = true;
+        function getPoster () {
+            url = "Posters/Poster" + index + ".png";
+            Posters.open("GET", url, false);
+            Posters.send();
+            status1 = Posters.getResponseHeader("content-type");
+            if (status1 == "image/png") {
+                image = document.createElement("img"); image.setAttribute("src", url); image.setAttribute("class", "Poster_element"); image.setAttribute("id", "Poster" + index); Poster_list.appendChild(image);
+                index++;
+                setTimeout(() => {
+                    getPoster();
+                }, 2000);
+            } else {
+                start_animation();
+            }
+        }
+        getPoster();
+        function start_animation() {
+            let i = 0;
+            let j;
+            let poster_index_in;
+            let poster_index_out;
+            setInterval(() => {
+                poster_index_in = i % index;
+                poster_index_out = (i + 1) % index;
+                console.log(poster_index_in);
+                console.log(poster_index_out);
+                
+                $('#Poster' + poster_index_in).animate({
+                    left: '0px',
+                }, 1500, () => {
+                    for (k = 0; k < index; k++) {
+                        document.getElementById("Poster" + k).style.zIndex = "1";
+                    }
+                    document.getElementById("Poster" + poster_index_in).style.zIndex = "3";
+                    document.getElementById("Poster" + poster_index_out).style.zIndex = "2"; //es fehlen nur noch die richtigen z_indices 👍
+                    $('#Poster' + poster_index_out).animate({
+                        left: '895px',
+                    }, 1500)
+                })
+                i++;
+            }, 5000);
+        }
+    </script>
+    <script defer>
         let xhttp = new XMLHttpRequest;
         xhttp.open("GET", "./timetable.txt", false);
         xhttp.send();
@@ -116,7 +163,7 @@
             Std_container.setAttribute("class", "StdContainer");
             let DescContainer = document.createElement("div"); DescContainer.setAttribute("class", "DescContainer");
             let teacher_container = document.createElement("div"); teacher_container.setAttribute("class", "teacherContainer"); teacher_container.setAttribute("style", "overflow: hidden"); 
-            let teacher_image = document.createElement("img"); teacher_image.setAttribute("src", place_of_image); teacher_image.setAttribute("alt", " "); teacher_image.setAttribute("class", "teacher_image"); teacher_image.setAttribute("onerror", "this.style.display='none'"); teacher_container.appendChild(teacher_image); console.log(teacher_image)
+            let teacher_image = document.createElement("img"); teacher_image.setAttribute("src", place_of_image); teacher_image.setAttribute("alt", " "); teacher_image.setAttribute("class", "teacher_image"); teacher_image.setAttribute("onerror", "this.style.display='none'"); teacher_container.appendChild(teacher_image);
             let zeitfenster = document.createElement("h6"); zeitfenster.setAttribute("id", i); zeitfenster.innerHTML = start + " " + end;
             Std_container.appendChild(teacher_container);
             let kurs_element = document.createElement("h4"); kurs_element.innerText = name; DescContainer.appendChild(kurs_element);
