@@ -5,7 +5,7 @@ Diese Software ist nicht zur kommerziellen Nutzung zu nutzen, sofern dies nicht 
 ---
 
 ### Nutzungsanleitung
-Die Software benötigt ein tägliches Update durch einen externen Rechner, sodass die Daten des Stundenplans aktuell bleiben.  
+Die Software benötigt ein tägliches Update durch einen externen Rechner, sodass die Daten des Stundenplans aktuell bleiben. Dies erfolgt automatisch über den Büro Rechner.  
 Für die sich unten befindliche Sektion der Werbebanner steht der Folder "Posters" zur Verfügung.  
 Jedes Bild, welches dort gespeichert wird muss mit dem Namen
 "Poster" + (Nummer des Posters - 1) + ".png" benannt werden.  
