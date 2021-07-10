@@ -108,9 +108,7 @@
             if (status1 == "image/png") {
                 image = document.createElement("img"); image.setAttribute("src", url); image.setAttribute("class", "Poster_element"); image.setAttribute("id", "Poster" + index); Poster_list.appendChild(image);
                 index++;
-                setTimeout(() => {
-                    getPoster();
-                }, 2000);
+                getPoster();
             } else {
                 start_animation();
             }
@@ -121,26 +119,28 @@
             let j;
             let poster_index_in;
             let poster_index_out;
-            setInterval(() => {
-                poster_index_in = i % index;
-                poster_index_out = (i + 1) % index;
-                console.log(poster_index_in);
-                console.log(poster_index_out);
-                
+            let Intervall = setInterval(() => {
+                poster_index_in = (i + 1) % index;
+                poster_index_out = i % index;
+                document.getElementById("Poster" + poster_index_in).style.zIndex = "2";
+                document.getElementById("Poster" + poster_index_out).style.zIndex = "1";
+                //console.log("Slide in Animation of ID: Poster" + poster_index_in + "\nAnd zIndex of: " + document.getElementById("Poster" + poster_index_in).style.zIndex);
                 $('#Poster' + poster_index_in).animate({
                     left: '0px',
                 }, 1500, () => {
-                    for (k = 0; k < index; k++) {
-                        document.getElementById("Poster" + k).style.zIndex = "1";
-                    }
-                    document.getElementById("Poster" + poster_index_in).style.zIndex = "3";
-                    document.getElementById("Poster" + poster_index_out).style.zIndex = "2"; //es fehlen nur noch die richtigen z_indices 👍
+                    //console.log("Slide out Animation of ID: Poster" + poster_index_out + "\nAnd zIndex of: " + document.getElementById("Poster" + poster_index_out).style.zIndex);
                     $('#Poster' + poster_index_out).animate({
                         left: '895px',
                     }, 1500)
                 })
-                i++;
-            }, 5000);
+                console.log("I is: " + i + "\nIndex in is: " + poster_index_in + "\nIndex out is: " + poster_index_out);
+                if (i > 10 && (i % index) == 0) {
+                    i = 1;                   
+                } else {
+                    i++
+                }
+                
+            }, 15000);
         }
     </script>
     <script defer>
