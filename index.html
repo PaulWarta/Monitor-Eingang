@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="preload" as="style">
     <title>Monitor Eingang</title>
     <meta http-equiv="refresh" content="1200">
     <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
     <script defer src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <meta name="description" content="Monitor für den Eingangsbereich der Tanzschule mit allen wichtigen Informationen">
 </head>
 <body id="body" style="margin: 0;">
 <body id="body" style="margin: 0;">
-    <img src="./Blop.png" alt=" " width="100%" height="100%">
+    <img src="./Blop.png" alt="none" width="100%" height="100%">
     <div class="Uhrzeit">
         <h1 id="Uhrzeit"></h1>
     </div>
@@ -41,7 +41,7 @@
         <div id="Posters">
         </div>
     </div>
-    <script>
+    <script defer>
         let proper_hour;
         let proper_minute;
         setInterval(
@@ -106,7 +106,7 @@
             Posters.send();
             status1 = Posters.getResponseHeader("content-type");
             if (status1 == "image/png") {
-                image = document.createElement("img"); image.setAttribute("src", url); image.setAttribute("class", "Poster_element"); image.setAttribute("id", "Poster" + index); Poster_list.appendChild(image);
+                image = document.createElement("img"); image.setAttribute("src", url); image.setAttribute("alt", "none"); image.setAttribute("class", "Poster_element"); image.setAttribute("id", "Poster" + index); Poster_list.appendChild(image);
                 index++;
                 getPoster();
             } else {
