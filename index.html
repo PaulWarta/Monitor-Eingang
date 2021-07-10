@@ -124,11 +124,9 @@
                 poster_index_out = i % index;
                 document.getElementById("Poster" + poster_index_in).style.zIndex = "2";
                 document.getElementById("Poster" + poster_index_out).style.zIndex = "1";
-                //console.log("Slide in Animation of ID: Poster" + poster_index_in + "\nAnd zIndex of: " + document.getElementById("Poster" + poster_index_in).style.zIndex);
                 $('#Poster' + poster_index_in).animate({
                     left: '0px',
                 }, 1500, () => {
-                    //console.log("Slide out Animation of ID: Poster" + poster_index_out + "\nAnd zIndex of: " + document.getElementById("Poster" + poster_index_out).style.zIndex);
                     $('#Poster' + poster_index_out).animate({
                         left: '895px',
                     }, 1500)
