@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="preload" as="style">
     <title>Monitor Eingang</title>
     <meta http-equiv="refresh" content="1200">
     <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
     <script defer src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="description" content="Monitor für den Eingangsbereich der Tanzschule mit allen wichtigen Informationen">
 </head>
 <body id="body" style="margin: 0;">
@@ -119,7 +118,7 @@
             let j;
             let poster_index_in;
             let poster_index_out;
-            let Intervall = setInterval(() => {
+            function runAnimation() {
                 poster_index_in = (i + 1) % index;
                 poster_index_out = i % index;
                 document.getElementById("Poster" + poster_index_in).style.zIndex = "2";
@@ -131,14 +130,16 @@
                         left: '895px',
                     }, 1500)
                 })
-                console.log("I is: " + i + "\nIndex in is: " + poster_index_in + "\nIndex out is: " + poster_index_out);
                 if (i > 10 && (i % index) == 0) {
                     i = 1;                   
                 } else {
                     i++
                 }
-                
-            }, 15000);
+                setTimeout(() => {
+                    runAnimation();
+                }, 15000);
+            }
+            runAnimation()
         }
     </script>
     <script defer>
