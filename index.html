@@ -15,18 +15,6 @@
 </head>
 <body id="body" style="margin: 0;">
 <body id="body" style="margin: 0;">
-    <img src="Plakat.png" id="Plakat" alt="none" width="100%" height="100%" style="position: absolute; top: 0px; left: 0px; display: none;" onload=PlakatToggle()>
-    <script defer>
-        let Plakat = document.getElementbyID("Plakat");
-        function PlakatToggle () {
-            setTimeout(() => {
-                $('#Plakat').show();
-            }, 50000, () => {
-                $('#Plakat').hide();
-                PlakatToggle();
-            }, 10000))
-        }
-    </script>
     <img src="./Blop.png" alt="none" width="100%" height="100%">
     <div class="Uhrzeit">
         <h1 id="Uhrzeit"></h1>
