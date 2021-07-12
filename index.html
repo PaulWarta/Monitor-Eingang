@@ -14,11 +14,11 @@
     <meta name="description" content="Monitor für den Eingangsbereich der Tanzschule mit allen wichtigen Informationen">
 </head>
 <body id="body" style="margin: 0;">
-    <img src="./Plakat/Plakat.png" id="Plakat">
+    <img src="./Plakat/Plakat.png" id="Plakat" onerror="this.style.display='none'">
     <script defer>
         setTimeout(() => {
             $('#Plakat').fadeIn(500);
-        }, 50000, () => {
+        }, 10000, () => {
             setTimeout(() => {
                 $('#Plakat').fadeOut(500);
             }, 10000);
