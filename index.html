@@ -17,10 +17,10 @@
     <img src="./Plakat/Plakat.png" id="Plakat" onerror="this.style.display='none'">
     <script defer>
         setTimeout(() => {
-            $('#Plakat').fadeIn(500);
+            $('#Plakat').fadeIn(1000);
         }, 30000, () => {
             setTimeout(() => {
-                $('#Plakat').fadeOut(500);
+                $('#Plakat').fadeOut(1000);
             }, 10000);
         });
     </script>
@@ -134,10 +134,10 @@
                 document.getElementById("Poster" + poster_index_out).style.zIndex = "1";
                 $('#Poster' + poster_index_in).animate({
                     left: '0px',
-                }, 1500, () => {
+                }, 2000, () => {
                     $('#Poster' + poster_index_out).animate({
                         left: '895px',
-                    }, 1500)
+                    }, 2000)
                 })
                 if (i > 10 && (i % index) == 0) {
                     i = 1;                   
@@ -223,7 +223,7 @@
         function move_up () {
             $("#Stundenplancontainer").animate({
                 top: "-=108px"
-            }, 600)
+            }, 1000)
         }
         setInterval(() => {
             let time_to_vanish_int = parseInt(time_to_vanish.slice(0,2) + time_to_vanish.slice(3,5));
