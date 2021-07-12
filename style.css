@@ -67,6 +67,16 @@ h1 {
     color: #F9F5E5;
 }
 
+#Plakat {
+    position: absolute;
+    display: none;
+    top: 0px;
+    left: 0px;
+    width: 1080px; 
+    height: 1920px;
+    object-fit: cover;
+    z-index: 1000;
+}
 #bannerbuy {
     position: absolute;
     width: 1436px;
