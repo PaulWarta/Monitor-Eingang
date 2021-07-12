@@ -18,9 +18,9 @@
     <script defer>
         function fading () {
             setTimeout(() => {
-                $('#Plakat').show(1000);
+                $('#Plakat').fadeIn(1000);
                 setTimeout(() => {
-                    $('#Plakat').hide(1000);
+                    $('#Plakat').fadeOut(1000);
                     fading();
                 }, 20000);
             }, 30000);
