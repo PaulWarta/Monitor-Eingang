@@ -281,6 +281,21 @@ h3 {
     border-radius: 28px;
 }
 
+#Schimmer {
+    background-color: white;
+    position: absolute;
+    top: 2000px;
+    left: -50px;
+    z-Index: 1000;
+    height: 250px;
+    width: 120%;
+    border-radius: 0px;
+    box-shadow: none;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.07) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: matrix(0.98, -0.17, -0.17, -0.98, 0, 0);
+}
+
 h4 {
     position: relative;
     width: 204px;

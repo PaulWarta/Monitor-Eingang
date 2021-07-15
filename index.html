@@ -14,18 +14,29 @@
     <meta name="description" content="Monitor für den Eingangsbereich der Tanzschule mit allen wichtigen Informationen">
 </head>
 <body id="body" style="margin: 0;">
+    <div id="Schimmer"></div>
+    <script defer>
+        setInterval(() => {
+            console.log("Executed")
+            document.getElementById("Schimmer").style.top = "2000px";
+            $('#Schimmer').animate({
+                top: '-200px'
+            }, 3000)
+        }, 10000);
+        
+    </script>   
     <img src="./Plakat/Plakat.png" id="Plakat" onerror="this.style.display='none'">
     <script defer>
-        function fading () {
-            setTimeout(() => {
-                $('#Plakat').fadeIn(1000);
-                setTimeout(() => {
-                    $('#Plakat').fadeOut(1000);
-                    fading();
-                }, 20000);
-            }, 30000);
-        }
-        fading();
+        // function fading () {
+        //     setTimeout(() => {
+        //         $('#Plakat').fadeIn(1000);
+        //         setTimeout(() => {
+        //             $('#Plakat').fadeOut(1000);
+        //             fading();
+        //         }, 20000);
+        //     }, 30000);
+        // }
+        // fading();
     </script>
     <img src="./Blop.png" alt="none" width="100%" height="100%">
     <div class="Uhrzeit">
