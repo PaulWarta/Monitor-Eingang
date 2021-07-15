@@ -20,6 +20,8 @@ h1 {
     font-weight: 900;
     font-size: 120px;
     color: #f0e6d5;
+    text-align: center;
+    align-items: center;
 }
 
 #Luca {
@@ -49,7 +51,7 @@ h1 {
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 127px;
+    font-size: 120px;
     line-height: 149px;
     display: flex;
     text-align: center;
