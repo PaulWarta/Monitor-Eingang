@@ -1,242 +1,47 @@
 <!DOCTYPE html>
-<html lang="de" id="html" style="top: 0; left: 0;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <title>Monitor Eingang</title>
-    <meta http-equiv="refresh" content="1200">
-    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
-    <script defer src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <meta name="description" content="Monitor für den Eingangsbereich der Tanzschule mit allen wichtigen Informationen">
+    <link rel="stylesheet" href="main.css">
+    <title>Monitor-Eingang</title>
 </head>
-<body id="body" style="margin: 0;">
-<body id="body" style="margin: 0;">
-    <img src="./Blop.png" alt="none" width="100%" height="100%">
-    <div class="Uhrzeit">
-        <h1 id="Uhrzeit"></h1>
-    </div>
-    <div class="Wetter">
-        <h1 id="Temperature"></h1>
-        <span class="iconify" data-inline="false" data-icon="" id="icon"></span>
-    </div>
-    <div class="Navigation">
-        <h2>Schön, <br> dass Ihr <br> wieder da seid!</h2>
-    </div>
-    <div id="Stundenplan">
-        <ul id="Stundenplancontainer"></ul>
-    </div>
-    <div class="News">
-        <h3>
-            Wenn ihr wollt, könnt Ihr <br> euch gerne hier <br> zusätzlich anmelden:
-        </h3>
-        <img src="Luca_QR_plain1.png" alt="Luca QR Code" id="Luca">
-        <img src="./Warnapp_QR_plain1.png" alt="Corona Warn App QR Code" id="Warnapp">
-    </div>
-    <div class="Poster_container">
-        <div id="Posters">
+<body>
+    <img src="Rahmen.svg">
+    <h1>M%C3%BCller</h1>
+    <main>
+        <div class="Stundenplan">
+            <div class="Splate1">
+                <img src="Logo_Saal1.svg">
+                <h1>Saal 1</h1>
+                <div class="saalContainer 1">
+
+                </div>
+            </div>
+            <div class="Splate2">
+                <img src="Logo_Saal2.svg">
+                <h1>Saal 2</h1>
+                <div class="saalContainer 2">
+
+                </div>
+            </div>
+            <div class="Splate3">
+                <img src="Logo_Saal3.svg">
+                <h1>Saal 3</h1>
+                <div class="saalContainer 3">
+
+                </div>
+            </div>
+            <div class="Splate4">
+                <img src="Logo_Saal4.svg">
+                <h1>Saal 4</h1>
+                <div class="saalContainer 4">
+
+                </div>
+            </div>
         </div>
-    </div>
-    <script defer>
-        let proper_hour;
-        let proper_minute;
-        setInterval(
-            function req_time() {
-            let time = new Date();
-            let Uhrzeit = document.getElementById("Uhrzeit")
-            if (parseInt(time.getHours()) < 10) {proper_hour = "0" + time.getHours().toString()} else {proper_hour = time.getHours().toString()};
-            if (parseInt(time.getMinutes()) < 10) {proper_minute = "0" + time.getMinutes().toString()} else {proper_minute = time.getMinutes().toString()};
-            Uhrzeit.innerText = proper_hour + ":" + proper_minute;
-        }, 500);
-    </script>
-    <script defer>
-        const icon_library = {
-            "01d" : "sunny",
-            "01n" : "moon",
-            "02d" : "partly-cloudy-day",
-            "02n" : "partly-cloudy-night",
-            "03d" : "cloudy",
-            "03n" : "cloudy",
-            "04d" : "cloudy",
-            "04n" : "cloudy",
-            "09d" : "rain",
-            "09n" : "rain",
-            "10d" : "rain-showers-day",
-            "10n" : "rain-showers-night",
-            "11d" : "thunderstorm",
-            "11n" : "thunderstorm",
-            "13d" : "snow",
-            "13n" : "snow",
-            "50d" : "fog",
-            "50n" : "fog"
-        }
-        function fetch_weather () {
-            var xhttp = new XMLHttpRequest;
-            xhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=muelheim&units=metric&appid=2e9c5036920dde9cf253e5f1581328c2", false);
-            xhttp.send();
-            let data = JSON.parse(xhttp.responseText);
-            let ic = data.weather;
-            ic = ic[0];
-            ic = ic.icon;
-            let url = "fluent:weather-" + icon_library[ic] + "-48-regular"
-            let temp = data.main;
-            temp = temp.temp;
-            document.getElementById("icon").setAttribute("data-icon", url);
-            document.getElementById("Temperature").innerText = Math.round(temp.toString()).toString() + "\xB0";
-        }
-        setInterval(fetch_weather(), 60000)
-        fetch_weather();
-    </script>
-    <script defer>
-        let Posters;
-        Posters = new XMLHttpRequest();
-        let index = 0;
-        let image;
-        let status;
-        let Poster_list = document.getElementById("Posters");
-        let status1;
-        let condition = true;
-        function getPoster () {
-            url = "Posters/Poster" + index + ".png";
-            Posters.open("GET", url, false);
-            Posters.send();
-            status1 = Posters.getResponseHeader("content-type");
-            if (status1 == "image/png") {
-                image = document.createElement("img"); image.setAttribute("src", url); image.setAttribute("alt", "none"); image.setAttribute("class", "Poster_element"); image.setAttribute("id", "Poster" + index); Poster_list.appendChild(image);
-                index++;
-                getPoster();
-            } else {
-                start_animation();
-            }
-        }
-        getPoster();
-        function start_animation() {
-            let i = 0;
-            let j;
-            let poster_index_in;
-            let poster_index_out;
-            function runAnimation() {
-                poster_index_in = (i + 1) % index;
-                poster_index_out = i % index;
-                document.getElementById("Poster" + poster_index_in).style.zIndex = "2";
-                document.getElementById("Poster" + poster_index_out).style.zIndex = "1";
-                $('#Poster' + poster_index_in).animate({
-                    left: '0px',
-                }, 1500, () => {
-                    $('#Poster' + poster_index_out).animate({
-                        left: '895px',
-                    }, 1500)
-                })
-                if (i > 10 && (i % index) == 0) {
-                    i = 1;                   
-                } else {
-                    i++
-                }
-                setTimeout(() => {
-                    runAnimation();
-                }, 15000);
-            }
-            runAnimation()
-        }
-    </script>
-    <script defer>
-        let xhttp = new XMLHttpRequest;
-        xhttp.open("GET", "./timetable.txt", false);
-        xhttp.send();
-        let response = xhttp.responseText;
-        let data = JSON.parse(response);
-        let len = Object.keys(data).length;
-        for (i = 0; i < len; i++) {
-            let start = data[i]["start"];i
-            let end = data[i]["end"];
-            let name = data[i]["name"];
-            let teacher = data[i]["teacher"];
-            let room = data[i]["room"];
-            let place_of_image = "/Monitor-Eingang/images/" + teacher + ".png";
-
-
-            let Stundenplan = document.getElementById("Stundenplancontainer");
-            let Std_container = document.createElement("li")
-            Std_container.setAttribute("class", "StdContainer");
-            let DescContainer = document.createElement("div"); DescContainer.setAttribute("class", "DescContainer");
-            let teacher_container = document.createElement("div"); teacher_container.setAttribute("class", "teacherContainer"); teacher_container.setAttribute("style", "overflow: hidden"); 
-            let teacher_image = document.createElement("img"); teacher_image.setAttribute("src", place_of_image); teacher_image.setAttribute("alt", " "); teacher_image.setAttribute("class", "teacher_image"); teacher_image.setAttribute("onerror", "this.style.display='none'"); teacher_container.appendChild(teacher_image);
-            let zeitfenster = document.createElement("h6"); zeitfenster.setAttribute("id", i); zeitfenster.innerHTML = start + " " + end;
-            Std_container.appendChild(teacher_container);
-            let kurs_element = document.createElement("h4"); kurs_element.innerText = name; DescContainer.appendChild(kurs_element);
-            let kurs_description = document.createElement("h5"); kurs_description.innerText = room + " - " + teacher; DescContainer.appendChild(kurs_description);
-            Std_container.appendChild(DescContainer);
-            Std_container.appendChild(zeitfenster);
-            Stundenplan.appendChild(Std_container);
-        }
-    </script>
-    <script defer>
-        let hours;
-        let minutes;
-        let time_to_vanish;
-        let current_element;
-        let now;
-        let vanish_list = [];
-        let timetableLength;
-        let button_pressed = 0;
-        let length1;
-        function CalculateTimesToVanish () {
-            if (minutes > 19) {
-                time_to_vanish = hours + ":" + (minutes - 10)
-            }
-            else if (minutes > 10) {
-                time_to_vanish = hours + ":0" + (minutes - 10);
-            } else if(minutes == 10) {
-                time_to_vanish = hours + ":00";
-            } else {
-                time_to_vanish = (parseInt(hours) - 1).toString() + ":" + (parseInt(minutes) + 50).toString();
-            }
-        }
-        function getTime () {
-            now = new Date;
-            if (now.getMinutes < 10) {
-                minutes = "0" + now.getMinutes();
-            } else {minutes = now.getMinutes()}
-            if (now.getHours() < 10) {
-                hours = "0" + now.getHours();
-            } else {hours = now.getHours()}
-        }
-        function Saalbelegung () {
-            getTime();
-            CalculateTimesToVanish();
-        }
-        setInterval(() => {
-            Saalbelegung();
-        }, 1000);
-        function move_up () {
-            $("#Stundenplancontainer").animate({
-                top: "-=108px"
-            }, 600)
-        }
-        setInterval(() => {
-            let time_to_vanish_int = parseInt(time_to_vanish.slice(0,2) + time_to_vanish.slice(3,5));
-            timetableLength = document.getElementById("Stundenplancontainer").getElementsByTagName("li").length
-            vanish_list = [];
-            for (i = 0; i < timetableLength; i++) {
-                let element = document.getElementById(i).innerText;
-                let element_int = parseInt(element.slice(0,2) + element.slice(3,5));
-                if (time_to_vanish_int >= element_int) {
-                    vanish_list.push(i);
-                }
-                for (j = 0; j < timetableLength; j++) {
-                    length1 = vanish_list.length;
-                    if (button_pressed < length1) {
-                        move_up();
-                        button_pressed++;
-                    }
-                }
-            }
-        }, 2000);
-    </script>
-    <script defer>
-    </script>
+        <div id="PlakatContainer"></div>
+    </main>
 </body>
 </html>
