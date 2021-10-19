@@ -75,6 +75,8 @@ def Nimbuscloud ():
         timetable[i]["Saal"] = response[i]["room_id"]
         timetable[i]["Bem"] = response[i]["level"]
         timetable[i]["Lehrer"] = response[i]["teacher"]
+        if timetable[i]["Bem"].find('Gesellschaftstanz') != -1:
+            timetable[i]["Bem"] = timetable[i]["Bem"].replace("Gesellschaftstanz", 'Paartanz')
 
     timetable = json.dumps(timetable)
     return timetable
@@ -104,6 +106,7 @@ saal1 = []
 saal2 = []
 saal3 = []
 saal4 = []
+saal5 = []
 
 for i in range(len(stundenplandata)):
     if stundenplandata[i]["Saal"] == 1:
@@ -115,18 +118,19 @@ for i in range(len(stundenplandata)):
     if stundenplandata[i]["Saal"] == 4:
         saal4.append(stundenplandata[i])
     if stundenplandata[i]["Saal"] == 5:
-        saal3.append(stundenplandata[i])
-        saal2.append(stundenplandata[i])
+        saal5.append(stundenplandata[i])
 
 saal1 = json.dumps(saal1)
 saal2 = json.dumps(saal2)
 saal3 = json.dumps(saal3)
 saal4 = json.dumps(saal4)
+saal5 = json.dumps(saal5)
 
 print(saal1)
 print(saal2)
 print(saal3)
 print(saal4)
+print(saal5)
 
 
 
@@ -144,6 +148,10 @@ f.close()
 
 f = open("stundenplan4.json", "w")
 f.write(saal4)
+f.close()
+
+f = open("stundenplan5.json", "w")
+f.write(saal5)
 f.close()
 
 
