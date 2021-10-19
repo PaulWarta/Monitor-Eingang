@@ -45,6 +45,8 @@ function moveContainers () {
     return position
 }
 
+
+
 setInterval(() => {
     let containers = document.querySelectorAll('.saalContainer').forEach(container => {
         container.style.top = `${-moveContainers()}px`;

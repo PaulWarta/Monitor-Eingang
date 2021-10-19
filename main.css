@@ -134,4 +134,23 @@ main {
     transition: top 0.2s linear;
 }
 
+/* --- Plakat --- */
+
+#PlakatContainer {    
+    height: 780px;
+    width: 100%;
+    position: absolute;
+    top: 710px;
+    border-radius: 60px;
+    overflow: hidden;
+}
+
+.plakat {
+    position: absolute;
+    left: 900px;
+    width: 901px;
+    height: 781px;
+    border-radius: 60px;
+    transition: transform 2s ease-in-out;
+}
 
