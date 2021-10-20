@@ -51,7 +51,7 @@ setInterval(() => {
     let containers = document.querySelectorAll('.saalContainer').forEach(container => {
         container.style.top = `${-moveContainers()}px`;
     })
-}, 1000);
+}, 5000);
 
 calcHeight('12:00');
 

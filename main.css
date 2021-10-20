@@ -36,8 +36,10 @@ main {
     bottom: 0;
 }
 
+/* --- Stundenplan --- */
+
 #Stundenplan {
-    height: 680px;
+    height: 530px;
     width: 100%;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 60px;
@@ -64,11 +66,12 @@ main {
 
 .arrowSVG {
     position: absolute;
-    margin: auto;
+    margin: 20px auto;
     top: 0;
     right: 0;
     left: 0;
-    bottom: 500px;
+    bottom: 370px;
+    width: 50%;
 }
 
 .spalte > h1 {
@@ -76,7 +79,7 @@ main {
     right: 0;
     left: 0;
     width: fit-content;
-    top: 170px;
+    top: 140px;
     margin: 0 auto;
     font-size: 30px;
 }
@@ -85,11 +88,29 @@ main {
     width: 95%;
     height: 5px;
     position: absolute;
-    top: 220px;
+    top: 185px;
     background-color: white;
     left: 0;
     right: 0;
     margin: 0 auto;
+    z-index: 1;
+}
+
+.hider {
+    position: absolute;
+    top: 185px;
+    height: 490px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.belegung {
+    width: 100%;
+    background: #D98A9F;
+    border-radius: 20px;
+    padding: 8px;
+    box-sizing: border-box;
+    height: 135px; 
 }
 
 .belegung > h1 {
@@ -102,28 +123,12 @@ main {
     margin: 2px 0 0 0;
 }
 
-.belegung {
-    width: 100%;
-    background: #ffffff45;
-    border-radius: 20px;
-    padding: 8px;
-    box-sizing: border-box;
-}
-
 #SaalContainer5 > .belegung > h1 {
     font-size: 35px;
 }
 
 #SaalContainer5 > .belegung > h2 {
     font-size: 30px;
-}
-
-.hider {
-    position: absolute;
-    top: 225px;
-    height: 490px;
-    overflow: hidden;
-    width: 100%;
 }
 
 .saalContainer {
@@ -137,10 +142,10 @@ main {
 /* --- Plakat --- */
 
 #PlakatContainer {    
-    height: 780px;
+    height: 550px;
     width: 100%;
     position: absolute;
-    top: 710px;
+    top: 940px;
     border-radius: 60px;
     overflow: hidden;
 }
@@ -148,9 +153,33 @@ main {
 .plakat {
     position: absolute;
     left: 900px;
-    width: 901px;
-    height: 781px;
+    width: 900px;
+    height: 550px;
     border-radius: 60px;
     transition: transform 2s ease-in-out;
+}
+
+/* --- Cocktail --- */
+
+#Cocktail {
+    top: 555px;
+    left: 0px;
+    position: absolute;
+    height: 360px;
+    width: 435px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 60px;
+}
+
+/* --- Lageplan --- */
+
+#Lageplan {
+    top: 555px;
+    right: 0px;
+    position: absolute;
+    height: 360px;
+    width: 435px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 60px;
 }
 
