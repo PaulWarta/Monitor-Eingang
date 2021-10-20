@@ -12,7 +12,7 @@ html {
 body {
     margin: 0;
     position: relative;
-    background: linear-gradient(0deg, #ce002f, #ce002f52);
+    background: linear-gradient(0deg, rgba(206, 0, 48, 0.79), #AA3354);
     height: 1920px;
     width: 1080px;
 }
