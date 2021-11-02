@@ -40,4 +40,4 @@ jobs:
       
 
       - name: Merge Branches 
-        run: gut merge master
+        run: git merge master
