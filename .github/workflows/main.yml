@@ -40,4 +40,7 @@ jobs:
       
 
       - name: Merge Branches 
-        run: git merge master
+        run: |
+          git checkout master
+          git merge --no-ff create-pull-request/patch
+          git push origin master
