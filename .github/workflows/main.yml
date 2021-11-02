@@ -39,6 +39,6 @@ jobs:
           git config --local user.email "paul@team-warta.de"
           git config --local user.name "Paul Warta"
           git add -A
-          git commit -m "update data" -a
+          git commit -m "update some data" -a
           
       
