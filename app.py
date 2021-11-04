@@ -5,6 +5,7 @@ import json
 from datetime import date, datetime, time, timedelta
 import os
 from urllib.parse import unquote
+import sys
 
 os.system('clear')
 
@@ -18,7 +19,7 @@ lehrerAbkürzungen = {
 
 
 def Stundenplan ():
-    response = requests.post('https://anmeldung.tanzhaus-muelheim.de/saalbelegung/', data={'apikey':'db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da'})
+    response = requests.post('https://anmeldung.tanzhaus-muelheim.de/saalbelegung/', data={'apikey':sys.argv[1]})
 
     response = response.text
     response = json.loads(response)
@@ -60,7 +61,7 @@ def Nimbuscloud ():
     current_date = datetime.now() - timedelta(days=1)
     timestamp = int(current_date.timestamp())
     
-    response = requests.post("https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", data={"apikey":"db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da", "date":timestamp, "days": "2", "programOnlyNew": "false"})
+    response = requests.post("https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", data={"apikey":sys.argv[2], "date":timestamp, "days": "2", "programOnlyNew": "false"})
     response = response.text
     response = json.loads(response)
     response = response["content"]
