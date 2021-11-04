@@ -1,5 +1,0 @@
-POST https://anmeldung.tanzhaus-muelheim.de/saalbelegung/ HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Connection: keep-alive
-
-apikey=db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da
