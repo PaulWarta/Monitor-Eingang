@@ -26,7 +26,6 @@ function slider () {
     
     if (id - 1 === -1) {
         oldId = files.length - 1;
-        console.log(oldId);
     } else {
         oldId = id - 1;
     }
