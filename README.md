@@ -1,35 +1,20 @@
 # Monitor-Eingang
 ### Lizenz
-Diese Software ist nicht zur kommerziellen Nutzung zu nutzen, sofern dies nicht mit dem Programmierer Paul Warta besprochen wurde.
+Diese Software ist lediglich in Absprache mit dem Entwickler Paul Warta zu nutzen. Bei Interesse wenden Sie sich bitte an die unten angegebene E-Mail Adresse.
 
 ---
+
+## Funktionsüberblick
+
+Diese Program verwendet API Schnittstellen um die Benötigten Daten von anderen Servern anzufordern, verarbeitet diese und gibt sie in Form einer Website aus.
+Zu beachten ist, dass standardmäßig alle Veranstaltungen mit der gleichen Startzeit und dem gleichen Veranstaltungsort so verarbeitet werden, dass nur eines bestehen bleibt und alle weiteren Veranstaltungen aus der Übersicht gelöscht werden.
 
 ## Nutzungsanleitung
-Die Software benötigt ein tägliches Update durch einen externen Rechner, sodass die Daten des Stundenplans aktuell bleiben. Dies erfolgt automatisch über den Büro Rechner.
 
-### Poster unten
-Für die sich unten befindliche Sektion der Werbebanner steht der Folder "Posters" zur Verfügung.  
-Jedes Bild, welches dort gespeichert wird muss mit dem Namen
-"Poster" + (Nummer des Posters - 1) + ".png" benannt werden.  
-Bsp:
-  * Poster0.png
-  * Poster1.png
-  * Poster2.png
-  
-Wichtig hierbei ist darauf zu achten, dass der Index bei null beginnt, und fortlaufend ist, also ohne Sprünge durchzuführen. Sollte eines dieser Aspekte nicht einghelaten werden, kann das Programm die benötigten Datein nicht laden.  
+# Einige Features werden noch entwickelt!
 
-### Vollbild Plakat
-Für das Einfügen des Vollbild Plakats, muss diese in den Ordner "Plakat" und mit der Bezeichnung "Plakat.png" eingefügt werden.
-
----
 
 Mit freundlichen Grüßen,
 Paul Warta
-
-
-
-
-
-
 
 E-Mail: paul@team-warta.de
