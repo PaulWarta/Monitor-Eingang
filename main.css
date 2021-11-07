@@ -99,7 +99,7 @@ main {
 .hider {
     position: absolute;
     top: 185px;
-    height: 490px;
+    height: 345px;
     overflow: hidden;
     width: 100%;
 }
