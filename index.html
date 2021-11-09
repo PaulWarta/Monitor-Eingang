@@ -10,48 +10,48 @@
     <script src="./Plakat.js"></script>
 </head>
 <body>
-    <img id="Rahmen" src="./Images/Rahmen.svg">
+    <img id="Rahmen" src="./Images/Rahmen.svg" onerror="this.style.display='none'">
     <main>
         <div id="Stundenplan">
             <div id="Seperator"></div>
             <div id="Spalte1" class="spalte">
-                <img class="arrowSVG" src="./Images/Saal1.svg">
+                <img class="arrowSVG" src="./Images/Saal1.svg" onerror="this.style.display='none'">
                 <h1>Saal 1</h1>
-                <div class="hider">
+                <div class="hider" id="Hider1">
                     <div id="SaalContainer1" class="saalContainer">
                     
                     </div>
                 </div>
             </div>
             <div id="Spalte2" class="spalte">
-                <img class="arrowSVG" src="./Images/Saal2und3.svg">
+                <img class="arrowSVG" src="./Images/Saal2und3.svg" onerror="this.style.display='none'">
                 <h1>Saal 2</h1>
-                <div class="hider">
+                <div class="hider" id="Hider2">
                     <div id="SaalContainer2" class="saalContainer">
     
                     </div>
                 </div>
             </div>
             <div id="Spalte3" class="spalte">
-                <img class="arrowSVG" src="./Images/Saal2und3.svg">
+                <img class="arrowSVG" src="./Images/Saal2und3.svg" onerror="this.style.display='none'">
                 <h1>Saal 3</h1>
-                <div class="hider">
+                <div class="hider" id="Hider3">
                     <div id="SaalContainer3" class="saalContainer">
     
                     </div>
                 </div>
             </div>
             <div id="Spalte4" class="spalte">
-                <img class="arrowSVG" src="./Images/Saal4.svg">
+                <img class="arrowSVG" src="./Images/Saal4.svg" onerror="this.style.display='none'">
                 <h1>Saal 4</h1>
-                <div class="hider">
+                <div class="hider" id="Hider4">
                     <div id="SaalContainer4" class="saalContainer">
     
                     </div>
                 </div>
             </div>
             <div id="Spalte5" class="spalte">
-                <div class="hider">
+                <div class="hider" id="Hider5">
                     <div id="SaalContainer5" class="saalContainer">
     
                     </div>
@@ -59,11 +59,11 @@
             </div>
         </div>
         <div id="Cocktail">
-            <img src="./Images/CocktailDesTages.png">
+            <img src="./Images/CocktailDesTages.png" onerror="this.style.display='none'">
         </div>
 
         <div id="Lageplan">
-            <img src="./Images/Lageplan.png">
+            <img src="./Images/Lageplan.png" onerror="this.style.display='none'">
         </div>
         <div id="PlakatContainer"></div>
     </main>
