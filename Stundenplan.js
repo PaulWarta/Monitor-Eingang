@@ -56,7 +56,6 @@ function createHTML (saal, response) {
 
 function slideUp () {
     let now = new Date();
-    now = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 17, 50, 0)
     let top = 0;
     for (i = 1; i <= 5; i++) {
         let stundenplanoffset = 0;
