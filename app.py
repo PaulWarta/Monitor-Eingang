@@ -104,7 +104,7 @@ for i in range(len(start)):
 
 stundenplandata = stundenplandataNew
 
-# Diese Arrays sind zum testen der Deuplikate da: 
+# Diese Arrays sind zum testen der Duplikate da: 
 # saal1 = [{"Von": "09:00", "Bis": "10:30", "Saal": 1, "Bem": "Formationen", "Lehrer": ""}, {"Von": "09:00", "Bis": "10:30", "Saal": 1, "Bem": "Formationen 2", "Lehrer": ""}, {"Von": "10:30", "Bis": "11:30", "Saal": 1, "Bem": "Formationen", "Lehrer": ""}, {"Von": "12:00", "Bis": "13:30", "Saal": 1, "Bem": "Formationen", "Lehrer": "Coach Ryu"}]
 # saal2 = [{"Von": "10:30", "Bis": "12:00", "Saal": 2, "Bem": "Formationen", "Lehrer": ""}]
 # saal3 = []
@@ -128,15 +128,18 @@ for i in range(len(stundenplandata)):
     if stundenplandata[i]["Saal"] == 4:
         saal4.append(stundenplandata[i])
     if stundenplandata[i]["Saal"] == 5:
-        saal5.append(stundenplandata[i])
+        # saal5.append(stundenplandata[i])
+        saal2.append(stundenplandata[i])
+        saal3.append(stundenplandata[i])
 
 # Die nachfolgende Schleife kontrolliert die Arrays der Saele auf eine gleiche Startuhrzeit wobei die Elemente verschieden sein müssen und löscht ggf. das Duplikat
-for i in range(1, 6):
-    saal = eval("saal" + str(i))
-    for vergleichsElement in saal:
-        for element in saal:
-            if (vergleichsElement["Von"] == element["Von"] and str(vergleichsElement) != str(element)):
-                saal.remove(element)
+# for i in range(1, 6):
+#     saal = eval("saal" + str(i))
+#     for vergleichsElement in saal:
+#         for element in saal:
+#             if (vergleichsElement["Von"] == element["Von"] and str(vergleichsElement) != str(element)):
+#                 if (vergleichsElement["Bem"] == "Paartanz")
+#                 saal.remove(element)
             
 
     
