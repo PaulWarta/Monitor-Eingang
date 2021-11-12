@@ -20,7 +20,7 @@ lehrerAbkuerzungen = {
 
 # Laedt die Dateien aus dem Stundenplan (von Patrick, aber ausschließlich die Veranstaltungen die nicht in der Nimbuscloud eingetragen sind) und wandelt diese in das von uns verwendete Schema um
 def Stundenplan ():
-    response = requests.post('https://anmeldung.tanzhaus-muelheim.de/saalbelegung/', data={'apikey':{{ secrets.NIMBUSCLOUD }}})
+    response = requests.post('https://anmeldung.tanzhaus-muelheim.de/saalbelegung/', data={'apikey': sys.argv[1] })
 
     response = response.text
     response = json.loads(response)
@@ -64,7 +64,7 @@ def Nimbuscloud ():
     timestamp = int(current_date.timestamp())
     timestamp = timestamp + (86400 * 2)     # Testing
     
-    response = requests.post("https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", data={"apikey":{{ secrets.NIMBUSCLOUD }}, "date":timestamp, "days": "2", "programOnlyNew": "false"})
+    response = requests.post("https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", data={"apikey": sys.argv[1], "date":timestamp, "days": "2", "programOnlyNew": "false"})
     response = response.text
     response = json.loads(response)
     response = response["content"]
