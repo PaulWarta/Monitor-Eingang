@@ -9,7 +9,7 @@ import sys
 
 os.system('clear')
 
-lehrerAbkürzungen = {
+lehrerAbkuerzungen = {
     "PW": "Paul Warta",
     "CB": "Christopher Bischoff",
     "CR": "Claudia Ritter",
@@ -20,7 +20,7 @@ lehrerAbkürzungen = {
 
 # Laedt die Dateien aus dem Stundenplan (von Patrick, aber ausschließlich die Veranstaltungen die nicht in der Nimbuscloud eingetragen sind) und wandelt diese in das von uns verwendete Schema um
 def Stundenplan ():
-    response = requests.post('https://anmeldung.tanzhaus-muelheim.de/saalbelegung/', data={'apikey':'db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da'})
+    response = requests.post('https://anmeldung.tanzhaus-muelheim.de/saalbelegung/', data={'apikey':{{ secrets.NIMBUSCLOUD }}})
 
     response = response.text
     response = json.loads(response)
@@ -39,7 +39,7 @@ def Stundenplan ():
                 response[i].pop("exLehrer")
             else: 
                 response[i].pop("exLehrer")
-                response[i]["Lehrer"] = lehrerAbkürzungen[response[i]["Lehrer"]]
+                response[i]["Lehrer"] = lehrerAbkuerzungen[response[i]["Lehrer"]]
             
             if response[i]["exBez"] != "":
                 response[i]["Bem"] = response[i]["exBez"]
@@ -62,8 +62,9 @@ def Stundenplan ():
 def Nimbuscloud ():
     current_date = datetime.now() - timedelta(days=1)
     timestamp = int(current_date.timestamp())
+    timestamp = timestamp + (86400 * 2)     # Testing
     
-    response = requests.post("https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", data={"apikey":'db7a5918390d7c70d3ea9bc02afa667c3147097664ad5e9ee4a772f42c7259da', "date":timestamp, "days": "2", "programOnlyNew": "false"})
+    response = requests.post("https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", data={"apikey":{{ secrets.NIMBUSCLOUD }}, "date":timestamp, "days": "2", "programOnlyNew": "false"})
     response = response.text
     response = json.loads(response)
     response = response["content"]
@@ -76,10 +77,8 @@ def Nimbuscloud ():
         timetable[i]["Von"] = datetime.strftime(datetime.strptime(response[i]["start_date"], '%Y-%m-%d %H:%M'), '%H:%M')
         timetable[i]["Bis"] = datetime.strftime(datetime.strptime(response[i]["end_date"], '%Y-%m-%d %H:%M'), '%H:%M')
         timetable[i]["Saal"] = response[i]["room_id"]
-        timetable[i]["Bem"] = response[i]["level"]
+        timetable[i]["Bem"] = response[i]["displayName"]
         timetable[i]["Lehrer"] = response[i]["teacher"]
-        if timetable[i]["Bem"].find('Gesellschaftstanz') != -1:
-            timetable[i]["Bem"] = timetable[i]["Bem"].replace("Gesellschaftstanz", 'Paartanz')
 
     timetable = json.dumps(timetable)
     return timetable
@@ -131,15 +130,26 @@ for i in range(len(stundenplandata)):
         # saal5.append(stundenplandata[i])
         saal2.append(stundenplandata[i])
         saal3.append(stundenplandata[i])
+    if stundenplandata[i]["Saal"] == 6:
+        saal1.append(stundenplandata[i])
 
-# Die nachfolgende Schleife kontrolliert die Arrays der Saele auf eine gleiche Startuhrzeit wobei die Elemente verschieden sein müssen und löscht ggf. das Duplikat
-# for i in range(1, 6):
-#     saal = eval("saal" + str(i))
-#     for vergleichsElement in saal:
-#         for element in saal:
-#             if (vergleichsElement["Von"] == element["Von"] and str(vergleichsElement) != str(element)):
-#                 if (vergleichsElement["Bem"] == "Paartanz")
-#                 saal.remove(element)
+#Die nachfolgende Schleife kontrolliert die Arrays der Saele auf eine gleiche Startuhrzeit wobei die Elemente verschieden sein müssen und löscht ggf. das Duplikat
+for i in range(1, 6):
+    saal = eval("saal" + str(i))
+    for vergleichsElement in saal:
+        for element in saal:
+            if (vergleichsElement["Von"] == element["Von"] and str(vergleichsElement) != str(element)):
+                if vergleichsElement["Bem"] == "Hochzeitskurse" and element["Bem"] == "Paartanz-Tanzjahr":
+                    vergleichsElement["Bem"] = "Einsteigerkurs";
+                if vergleichsElement["Bem"] == "Paartanz-Tanzjahr" and element["Bem"] == "Hochzeitskurse":
+                    vergleichsElement["Bem"] = "Einsteigerkurs";
+                if vergleichsElement["Bem"] == "2005 und \u00e4lter" and element["Bem"] == "2006 - 2007":
+                    vergleichsElement["Bem"] = "2005 - 2007";
+                if vergleichsElement["Bem"] == "2008 - 2009" and element["Bem"] == "2010 - 2011":
+                    vergleichsElement["Bem"] = "2008 - 2011";
+                if vergleichsElement["Bem"] == "2008 - 2011" and element["Bem"] == "2010 - 2011":
+                    vergleichsElement["Bem"] = "2008 - 2011";
+                saal.remove(element)
             
 
     

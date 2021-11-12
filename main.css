@@ -20,7 +20,6 @@ body {
 #Rahmen {
     width: 1080px;
     height: 1920px;
-    z-index: 10;
     position: absolute;
     top: 28px;
 }
@@ -39,7 +38,7 @@ main {
 /* --- Stundenplan --- */
 
 #Stundenplan {
-    height: 530px;
+    height: 490px;
     width: 100%;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 60px;
@@ -121,12 +120,12 @@ main {
 }
 
 .belegung > h1 {
-    font-size: 28px;
+    font-size: 24px;
     margin: 0 0 4px 0;
 }
 
 .belegung > h2 {
-    font-size: 21px;
+    font-size: 18px;
     margin: 2px 0 0 0;
 }
 
@@ -169,11 +168,11 @@ main {
 /* --- Cocktail --- */
 
 #Cocktail {
-    top: 555px;
+    top: 535px;
     left: 0px;
     position: absolute;
     height: 360px;
-    width: 435px;
+    width: 428px;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 60px;
 }
@@ -181,11 +180,11 @@ main {
 /* --- Lageplan --- */
 
 #Lageplan {
-    top: 555px;
+    top: 535px;
     right: 0px;
     position: absolute;
     height: 360px;
-    width: 435px;
+    width: 428px;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 60px;
 }
