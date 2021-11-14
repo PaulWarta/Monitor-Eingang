@@ -62,7 +62,6 @@ def Stundenplan ():
 def Nimbuscloud ():
     current_date = datetime.now() - timedelta(days=1)
     timestamp = int(current_date.timestamp())
-    timestamp = timestamp + (86400 * 2)     # Testing
     
     response = requests.post("https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", data={"apikey": sys.argv[1], "date":timestamp, "days": "2", "programOnlyNew": "false"})
     response = response.text
