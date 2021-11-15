@@ -16,8 +16,8 @@ function createHTML (saal, response) {
     let data = JSON.parse(response);
     let html = "";
     for (let i = 0; i < data.length; i++) {
-        if (data[i]["Bem"] == '') { data[i]["Bem"] = "Privatstunde"} 
-        html = `<div class="belegung ${i + 1}"><h1>${data[i]["Bem"]}</h1>\n<h2>${data[i]["Von"]} - ${data[i]["Bis"]}</h2>\n<h2>${data[i]["Lehrer"]}</h2><p class="von" hidden>${data[i]["Von"]}</p><p class="bis" hidden>${data[i]["Bis"]}</p></div>`
+        if (data[i]["Name"] == '') { data[i]["Name"] = "Privatstunde"} 
+        html = `<div class="belegung ${i + 1}"><h1>${data[i]["Name"]}</h1>\n<div><h2>${data[i]["Von"]} - ${data[i]["Bis"]}</h2>\n<h2>${data[i]["Lehrer"]}</h2></div><p class="von" hidden>${data[i]["Von"]}</p><p class="bis" hidden>${data[i]["Bis"]}</p></div>`
         parent.innerHTML += html;
         html = "";
     }
@@ -54,8 +54,13 @@ function createHTML (saal, response) {
 //     })
 // }, 5000);
 
+
+// fürs testen einfach hours und minutes hinzufügen als Parameter
 function slideUp () {
     let now = new Date();
+    // For testing purposes:
+    // now = new Date(now.getFullYear(), now.getMonth(), now.getDay(), hours, minutes, 0)
+    console.log(now);
     let top = 0;
     for (i = 1; i <= 5; i++) {
         let stundenplanoffset = 0;
@@ -68,13 +73,28 @@ function slideUp () {
                 stundenplanoffset += 145;
             }
         })
+        document.getElementById('SaalContainer' + i).style.opacity = '1';
         document.getElementById('SaalContainer' + i).style.top = `${-stundenplanoffset}px`;
+
+        element1 = document.querySelector('#Spalte' + i + ' .von');
+        von = element1.innerText
+        stunde = parseInt(von.slice(0, 2));
+        minute = parseInt(von.slice(3, 5));
+        von = new Date(now.getFullYear(), now.getMonth(), now.getDate(), stunde, minute, 0)
+        console.log(`Spalte${i}`)
+        console.log(element1);
+        console.log(von.getTime() - now.getTime());
+        console.log((von.getTime() - now.getTime()) >= 900);
+        if ( von.getTime() - now.getTime() >= 1800000) {
+            document.getElementById('SaalContainer' + i).style.opacity = 0;
+            document.getElementById('SaalContainer' + i).style.top = '200px';
+        }
     }
 }
 
 setTimeout(() => {
     slideUp()
-}, 1000);
+}, 10000000000);
 
 
 

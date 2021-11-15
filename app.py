@@ -6,6 +6,7 @@ from datetime import date, datetime, time, timedelta
 import os
 from urllib.parse import unquote
 import sys
+import re
 
 os.system('clear')
 
@@ -42,12 +43,12 @@ def Stundenplan ():
                 response[i]["Lehrer"] = lehrerAbkuerzungen[response[i]["Lehrer"]]
             
             if response[i]["exBez"] != "":
-                response[i]["Bem"] = response[i]["exBez"]
+                response[i]["Name"] = response[i]["exBez"]
                 response[i].pop("exBez")
             else: 
                 response[i].pop("exBez")
 
-            response[i]["Bem"] = response[i]["Bem"].replace('+', ' ')
+            response[i]["Name"] = response[i]["Name"].replace('+', ' ')
 
             response[i].pop("Wochentag")
 
@@ -62,6 +63,7 @@ def Stundenplan ():
 def Nimbuscloud ():
     current_date = datetime.now() - timedelta(days=1)
     timestamp = int(current_date.timestamp())
+    timestamp = timestamp + (86400 * 6)
     
     response = requests.post("https://tanzschule-ritter.nimbuscloud.at/api/json/v1/timetable/data", data={"apikey": sys.argv[1], "date":timestamp, "days": "2", "programOnlyNew": "false"})
     response = response.text
@@ -76,7 +78,7 @@ def Nimbuscloud ():
         timetable[i]["Von"] = datetime.strftime(datetime.strptime(response[i]["start_date"], '%Y-%m-%d %H:%M'), '%H:%M')
         timetable[i]["Bis"] = datetime.strftime(datetime.strptime(response[i]["end_date"], '%Y-%m-%d %H:%M'), '%H:%M')
         timetable[i]["Saal"] = response[i]["room_id"]
-        timetable[i]["Bem"] = response[i]["displayName"]
+        timetable[i]["Name"] = response[i]["displayName"]
         timetable[i]["Lehrer"] = response[i]["teacher"]
 
     timetable = json.dumps(timetable)
@@ -103,11 +105,11 @@ for i in range(len(start)):
 stundenplandata = stundenplandataNew
 
 # Diese Arrays sind zum testen der Duplikate da: 
-# saal1 = [{"Von": "09:00", "Bis": "10:30", "Saal": 1, "Bem": "Formationen", "Lehrer": ""}, {"Von": "09:00", "Bis": "10:30", "Saal": 1, "Bem": "Formationen 2", "Lehrer": ""}, {"Von": "10:30", "Bis": "11:30", "Saal": 1, "Bem": "Formationen", "Lehrer": ""}, {"Von": "12:00", "Bis": "13:30", "Saal": 1, "Bem": "Formationen", "Lehrer": "Coach Ryu"}]
-# saal2 = [{"Von": "10:30", "Bis": "12:00", "Saal": 2, "Bem": "Formationen", "Lehrer": ""}]
+# saal1 = [{"Von": "09:00", "Bis": "10:30", "Saal": 1, "Name": "Formationen", "Lehrer": ""}, {"Von": "09:00", "Bis": "10:30", "Saal": 1, "Name": "Formationen 2", "Lehrer": ""}, {"Von": "10:30", "Bis": "11:30", "Saal": 1, "Name": "Formationen", "Lehrer": ""}, {"Von": "12:00", "Bis": "13:30", "Saal": 1, "Name": "Formationen", "Lehrer": "Coach Ryu"}]
+# saal2 = [{"Von": "10:30", "Bis": "12:00", "Saal": 2, "Name": "Formationen", "Lehrer": ""}]
 # saal3 = []
 # saal4 = []
-# saal5 = [{"Von": "12:00", "Bis": "13:30", "Saal": 5, "Bem": "Formationen", "Lehrer": "Linda Ritter"}, {"Von": "13:30", "Bis": "15:00", "Saal": 5, "Bem": "Formationen", "Lehrer": "Coach Ryu"}, {"Von": "15:00", "Bis": "16:30", "Saal": 5, "Bem": "Formationen", "Lehrer": "Coach Ryu"}]
+# saal5 = [{"Von": "12:00", "Bis": "13:30", "Saal": 5, "Name": "Formationen", "Lehrer": "Linda Ritter"}, {"Von": "13:30", "Bis": "15:00", "Saal": 5, "Name": "Formationen", "Lehrer": "Coach Ryu"}, {"Von": "15:00", "Bis": "16:30", "Saal": 5, "Name": "Formationen", "Lehrer": "Coach Ryu"}]
 
 saal1 = []
 saal2 = []
@@ -132,24 +134,36 @@ for i in range(len(stundenplandata)):
     if stundenplandata[i]["Saal"] == 6:
         saal1.append(stundenplandata[i])
 
+
+for i in range(1, 6):
+    saal = eval("saal" + str(i))
+    for j in range(len(saal)):
+        saal[j]["Name"] = re.sub("( - Montags)|( - Dienstags)|( - Mittwochs)|( - Donnerstags)|( - Freitags)|( - Samstags)|( - Sonntags)|( - Montag)|( - Dienstag)|( - Mittwoch)|( - Donnerstag)|( - Freitag)|( - Samstag)|( - Sonntag)| [0-9]{2}[. :][0-9]{2} Uhr", "", saal[j]["Name"])
+        saal[j]["Name"] = re.sub("(HipHop Formationen J2 und Adults)", "Formationen<br>J2 und Adults", saal[j]["Name"])
+        saal[j]["Name"] = re.sub("Zumba", "Zumba<br>", saal[j]["Name"])
+        saal[j]["Name"] = re.sub("Boys Only! ab 14 Jahre", "Boys Only!", saal[j]["Name"])
+        saal[j]["Name"] = re.sub("(Paartanz)|(Hochzeitskurs)", "Einsteigerkurs", saal[j]["Name"])
+    print(saal)
+
+
+
 #Die nachfolgende Schleife kontrolliert die Arrays der Saele auf eine gleiche Startuhrzeit wobei die Elemente verschieden sein müssen und löscht ggf. das Duplikat
 for i in range(1, 6):
     saal = eval("saal" + str(i))
     for vergleichsElement in saal:
         for element in saal:
             if (vergleichsElement["Von"] == element["Von"] and str(vergleichsElement) != str(element)):
-                if vergleichsElement["Bem"] == "Hochzeitskurse" and element["Bem"] == "Paartanz-Tanzjahr":
-                    vergleichsElement["Bem"] = "Einsteigerkurs";
-                if vergleichsElement["Bem"] == "Paartanz-Tanzjahr" and element["Bem"] == "Hochzeitskurse":
-                    vergleichsElement["Bem"] = "Einsteigerkurs";
-                if vergleichsElement["Bem"] == "2005 und \u00e4lter" and element["Bem"] == "2006 - 2007":
-                    vergleichsElement["Bem"] = "2005 - 2007";
-                if vergleichsElement["Bem"] == "2008 - 2009" and element["Bem"] == "2010 - 2011":
-                    vergleichsElement["Bem"] = "2008 - 2011";
-                if vergleichsElement["Bem"] == "2008 - 2011" and element["Bem"] == "2010 - 2011":
-                    vergleichsElement["Bem"] = "2008 - 2011";
-                saal.remove(element)
-            
+                if vergleichsElement["Name"] == "Einsteigerkurs" and element["Name"] == "Einsteigerkurs":
+                    vergleichsElement["Name"] = "Einsteigerkurs";
+                if vergleichsElement["Name"] == "Einsteigerkurs" and element["Name"] == "Einsteigerkurs":
+                    vergleichsElement["Name"] = "Einsteigerkurs";
+                if vergleichsElement["Name"] == "2005 und \u00e4lter" and element["Name"] == "2006 - 2007":
+                    vergleichsElement["Name"] = "2005 - 2007";
+                if vergleichsElement["Name"] == "2008 - 2009" and element["Name"] == "2010 - 2011":
+                    vergleichsElement["Name"] = "2008 - 2011";
+                if vergleichsElement["Name"] == "2008 - 2011" and element["Name"] == "2010 - 2011":
+                    vergleichsElement["Name"] = "2008 - 2011";
+                saal.remove(element) 
 
     
 saal1 = json.dumps(saal1)
@@ -158,11 +172,11 @@ saal3 = json.dumps(saal3)
 saal4 = json.dumps(saal4)
 saal5 = json.dumps(saal5)
 
-print(saal1)
-print(saal2)
-print(saal3)
-print(saal4)
-print(saal5)
+# print(saal1)
+# print(saal2)
+# print(saal3)
+# print(saal4)
+# print(saal5)
 
 
 # Schreibt in die Files für das UI
