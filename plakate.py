@@ -1,4 +1,3 @@
-import os
 import json
 
 files = os.listdir('./Plakate')
