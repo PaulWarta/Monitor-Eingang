@@ -1,7 +1,7 @@
 import os
 import json
 
-files = os.listdir('Plakate')
+files = os.listdir('./Plakate')
 
 files.remove("Plakate.json")
 
