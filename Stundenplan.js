@@ -94,7 +94,7 @@ function slideUp () {
 
 setTimeout(() => {
     slideUp()
-}, 10000000000);
+}, 1500);
 
 
 
