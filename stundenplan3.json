@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 [{"Von": "15:30", "Bis": "16:30", "Saal": 3, "Name": "Zumba<br> Gold", "Lehrer": "Claudia Ritter"}, {"Von": "17:15", "Bis": "18:15", "Saal": 3, "Name": "2014 - 2015", "Lehrer": "Linda Ritter"}, {"Von": "18:15", "Bis": "19:15", "Saal": 3, "Name": "Piloxing", "Lehrer": "Linda Ritter"}, {"Von": "19:15", "Bis": "20:15", "Saal": 3, "Name": "Zumba<br> Gold Boost", "Lehrer": "Claudia Ritter"}]
+=======
+[{"Von": "17:00", "Bis": "18:00", "Saal": 5, "Name": "Formationen<br>J2 und Adults", "Lehrer": "Coach Ryu"}, {"Von": "18:15", "Bis": "19:15", "Saal": 3, "Name": "Zumba<br> Gold Boost", "Lehrer": "Claudia Ritter"}, {"Von": "19:15", "Bis": "20:15", "Saal": 3, "Name": "HipHop Erwachsene", "Lehrer": "Linda Ritter"}]
+>>>>>>> 199bb58ba698066310c75bd59b1851e0cc931547
