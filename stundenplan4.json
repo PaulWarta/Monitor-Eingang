@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-[{"Von": "16:30", "Bis": "17:30", "Saal": 4, "Name": "2012 - 2013", "Lehrer": ""}, {"Von": "19:45", "Bis": "21:05", "Saal": 4, "Name": "Lindy Hop", "Lehrer": "Thorsten Ritter"}]
-=======
-[{"Von": "17:15", "Bis": "18:15", "Saal": 4, "Name": "R\u00fccken-Fit", "Lehrer": ""}, {"Von": "18:15", "Bis": "19:15", "Saal": 4, "Name": "2005 - 2007", "Lehrer": ""}, {"Von": "19:30", "Bis": "20:40", "Saal": 4, "Name": "Einsteigerkurs", "Lehrer": "Paul Warta"}, {"Von": "20:45", "Bis": "21:55", "Saal": 4, "Name": "DiscoFox", "Lehrer": ""}]
->>>>>>> 199bb58ba698066310c75bd59b1851e0cc931547
+[{"Von": "16:15", "Bis": "17:25", "Saal": 4, "Name": "DiscoFox mit Vorerfahrung", "Lehrer": ""}, {"Von": "18:45", "Bis": "19:55", "Saal": 4, "Name": "DiscoFox", "Lehrer": ""}]

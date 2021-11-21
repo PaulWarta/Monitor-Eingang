@@ -33,6 +33,10 @@ def Stundenplan ():
 
             response[i].pop("Grund")
 
+            response[i]["Name"] = response[i]["Bem"]
+            
+            response[i].pop("Bem")
+
             response[i]["Saal"] = int(response[i]["Saal"])
 
             if response[i]["exLehrer"] != "":
