@@ -26,6 +26,8 @@ def Stundenplan ():
     response = response.text
     response = json.loads(response)
 
+    print(response)
+
 
     if response != None:
         for i in range(len(response)):
