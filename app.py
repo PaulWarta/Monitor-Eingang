@@ -147,7 +147,7 @@ for i in range(1, 6):
         saal[j]["Name"] = re.sub("(HipHop Formationen J2 und Adults)", "Formationen<br>J2 und Adults", saal[j]["Name"])
         saal[j]["Name"] = re.sub("Zumba", "Zumba<br>", saal[j]["Name"])
         saal[j]["Name"] = re.sub("Boys Only! ab 14 Jahre", "Boys Only!", saal[j]["Name"])
-        saal[j]["Name"] = re.sub("(Paartanz)|(Hochzeitskurs)", "Einsteigerkurs", saal[j]["Name"])
+        saal[j]["Name"] = re.sub("(Gesellschaftstanzjahr)|(Hochzeitskurs)", "Einsteigerkurs", saal[j]["Name"])
     print(saal)
 
 
