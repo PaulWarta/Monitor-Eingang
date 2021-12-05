@@ -1,7 +1,4 @@
-<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1080 1080" enable-background="new 0 0 1080 1080" xml:space="preserve">
-<g>
-	<polygon fill="#fff" points="572.55,383.77 572.55,571.65 648.5,495.7 648.5,587.73 539.99,696.23 431.5,587.73 431.5,495.7 
-		507.46,571.65 507.46,383.77 	"/>
-</g>
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1080" height="1080" fill="white" fill-opacity="0.5"/>
+<path d="M641.006 56V638.097L876.317 402.786V687.916L540.128 1024.08L204 687.916V402.786L439.342 638.097V56H641.006Z" fill="white"/>
 </svg>
