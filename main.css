@@ -149,10 +149,10 @@ main {
 /* --- Plakat --- */
 
 #PlakatContainer {    
-    height: 550px;
+    height: 506.25px;
     width: 100%;
     position: absolute;
-    top: 940px;
+    top: 966px;
     border-radius: 60px;
     overflow: hidden;
 }
@@ -161,7 +161,7 @@ main {
     position: absolute;
     left: 900px;
     width: 900px;
-    height: 550px;
+    height: 506.25px;
     border-radius: 60px;
     transition: transform 2s ease-in-out;
 }
@@ -169,7 +169,7 @@ main {
 /* --- Cocktail --- */
 
 #Cocktail {
-    top: 535px;
+    top: 557px;
     left: 0px;
     position: absolute;
     height: 360px;
@@ -181,7 +181,7 @@ main {
 /* --- Lageplan --- */
 
 #Lageplan {
-    top: 535px;
+    top: 557px;
     right: 0px;
     position: absolute;
     height: 360px;
