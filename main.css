@@ -163,6 +163,7 @@ main {
     width: 900px;
     height: 506.25px;
     border-radius: 20px;
+    will-change: transform;
     transition: transform 2s ease-in-out;
 }
 
