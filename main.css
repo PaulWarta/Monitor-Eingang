@@ -41,7 +41,7 @@ main {
     height: 490px;
     width: 100%;
     background: rgba(255, 255, 255, 0.3);
-    border-radius: 60px;
+    border-radius: 20px;
     display: flex;
     overflow: hidden;
     justify-content: center;
@@ -50,7 +50,7 @@ main {
 .spalte {
     height: 100%;
     width: 20%;
-    border-radius: 60px;
+    border-radius: 20px;
     position: relative;
     text-align: center;
     margin: 0 15px;
@@ -153,7 +153,7 @@ main {
     width: 100%;
     position: absolute;
     top: 966px;
-    border-radius: 60px;
+    border-radius: 20px;
     overflow: hidden;
 }
 
@@ -162,7 +162,7 @@ main {
     left: 900px;
     width: 900px;
     height: 506.25px;
-    border-radius: 60px;
+    border-radius: 20px;
     transition: transform 2s ease-in-out;
 }
 
@@ -175,7 +175,7 @@ main {
     height: 360px;
     width: 428px;
     background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 60px;
+    border-radius: 20px;
 }
 
 /* --- Lageplan --- */
@@ -187,6 +187,6 @@ main {
     height: 360px;
     width: 428px;
     background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 60px;
+    border-radius: 20px;
 }
 

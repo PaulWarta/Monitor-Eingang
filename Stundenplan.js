@@ -60,7 +60,6 @@ function slideUp () {
     let now = new Date();
     // For testing purposes:
     // now = new Date(now.getFullYear(), now.getMonth(), now.getDay(), hours, minutes, 0)
-    console.log(now);
     let top = 0;
     for (i = 1; i <= 5; i++) {
         let stundenplanoffset = 0;
@@ -76,15 +75,15 @@ function slideUp () {
         document.getElementById('SaalContainer' + i).style.opacity = '1';
         document.getElementById('SaalContainer' + i).style.top = `${-stundenplanoffset}px`;
 
+        console.log(i);
         element1 = document.querySelector('#Spalte' + i + ' .von');
-        von = element1.innerText
+        if (element1 === null) {
+            continue;
+        }
+        von = element1.innerText;
         stunde = parseInt(von.slice(0, 2));
         minute = parseInt(von.slice(3, 5));
         von = new Date(now.getFullYear(), now.getMonth(), now.getDate(), stunde, minute, 0)
-        console.log(`Spalte${i}`)
-        console.log(element1);
-        console.log(von.getTime() - now.getTime());
-        console.log((von.getTime() - now.getTime()) >= 900);
         if ( von.getTime() - now.getTime() >= 1800000) {
             document.getElementById('SaalContainer' + i).style.opacity = 0;
             document.getElementById('SaalContainer' + i).style.top = '200px';
