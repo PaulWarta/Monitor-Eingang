@@ -72,7 +72,7 @@ function slideUp () {
                 stundenplanoffset += 145;
             }
         })
-        document.getElementById('SaalContainer' + i).style.opacity = '1';
+        document.getElementById('SaalContainer' + i).style.opacity = 1;
         document.getElementById('SaalContainer' + i).style.top = `${-stundenplanoffset}px`;
 
         console.log(i);
