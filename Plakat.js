@@ -33,7 +33,7 @@ function slider () {
     document.getElementById(`Plakat${oldId}`).style.zIndex = '1';
     setTimeout(() => {
         document.getElementById(`Plakat${oldId}`).style.opacity = '0';
-        document.getElementById(`Plakat${oldId}`).style.transform = 'translateX(+900px)';
+        document.getElementById(`Plakat${oldId}`).style.transform = 'translateX(0px)';
     }, 2100);
     
     id = id + 1;
