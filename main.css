@@ -175,8 +175,17 @@ main {
     position: absolute;
     height: 360px;
     width: 428px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgb(96, 95, 96);
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#Cocktail > img {
+    height: 310px;
+    width: 447px;
 }
 
 /* --- Lageplan --- */
