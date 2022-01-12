@@ -57,6 +57,7 @@ function createHTML (saal, response) {
 
 // fürs testen einfach hours und minutes hinzufügen als Parameter
 function slideUp () {
+    console.log("Test")
     let now = new Date();
     // For testing purposes:
     // now = new Date(now.getFullYear(), now.getMonth(), now.getDay(), hours, minutes, 0)
@@ -91,7 +92,7 @@ function slideUp () {
     }
 }
 
-setTimeout(() => {
+setInterval(() => {
     slideUp()
 }, 1500);
 
