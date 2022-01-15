@@ -1,1 +1,1 @@
-[{"Von": "12:00", "Bis": "13:30", "Saal": 5, "Name": "TR Basics", "Lehrer": "Linda Ritter"}, {"Von": "13:30", "Bis": "15:00", "Saal": 5, "Name": "Fabulous Devils", "Lehrer": "Coach Ryu"}, {"Von": "15:00", "Bis": "16:30", "Saal": 5, "Name": "Baddest Females", "Lehrer": "Coach Ryu"}]
+[{"Von": "12:00", "Bis": "13:30", "Saal": 5, "Name": "TR Basics", "Lehrer": "Linda Ritter"}, {"Saal": 5, "Von": "13:30", "Bis": "14:30", "Lehrer": "Kimbo", "Name": "HipHop Workshop"}]
