@@ -79,14 +79,15 @@ def Nimbuscloud ():
     timetable = []
 
     for i in range(len(response)):
-        if response[i]["text"] == "Rosenmontag":
+        try:
+            timetable.append({})
+            timetable[i]["Von"] = datetime.strftime(datetime.strptime(response[i]["start_date"], '%Y-%m-%d %H:%M'), '%H:%M')
+            timetable[i]["Bis"] = datetime.strftime(datetime.strptime(response[i]["end_date"], '%Y-%m-%d %H:%M'), '%H:%M')
+            timetable[i]["Saal"] = response[i]["room_id"]
+            timetable[i]["Name"] = response[i]["displayName"]
+            timetable[i]["Lehrer"] = response[i]["teacher"]
+        except:
             continue
-        timetable.append({})
-        timetable[i]["Von"] = datetime.strftime(datetime.strptime(response[i]["start_date"], '%Y-%m-%d %H:%M'), '%H:%M')
-        timetable[i]["Bis"] = datetime.strftime(datetime.strptime(response[i]["end_date"], '%Y-%m-%d %H:%M'), '%H:%M')
-        timetable[i]["Saal"] = response[i]["room_id"]
-        timetable[i]["Name"] = response[i]["displayName"]
-        timetable[i]["Lehrer"] = response[i]["teacher"]
 
     timetable = json.dumps(timetable)
     return timetable
