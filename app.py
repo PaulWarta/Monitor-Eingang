@@ -77,10 +77,9 @@ def Nimbuscloud ():
     response = response["events"]
 
     timetable = []
-    
-    print(response)
 
     for i in range(len(response)):
+        print(response[i])
         timetable.append({})
         timetable[i]["Von"] = datetime.strftime(datetime.strptime(response[i]["start_date"], '%Y-%m-%d %H:%M'), '%H:%M')
         timetable[i]["Bis"] = datetime.strftime(datetime.strptime(response[i]["end_date"], '%Y-%m-%d %H:%M'), '%H:%M')
