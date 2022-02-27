@@ -77,6 +77,8 @@ def Nimbuscloud ():
     response = response["events"]
 
     timetable = []
+    
+    print(response)
 
     for i in range(len(response)):
         timetable.append({})
