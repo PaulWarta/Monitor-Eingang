@@ -87,8 +87,8 @@ def Nimbuscloud ():
             timetable[i]["Name"] = response[i]["displayName"]
             timetable[i]["Lehrer"] = response[i]["teacher"]
         except:
-            continue
-
+            timetable.pop()
+  
     timetable = json.dumps(timetable)
     return timetable
 
