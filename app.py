@@ -15,7 +15,8 @@ lehrerAbkuerzungen = {
     "CB": "Christopher Bischoff",
     "CR": "Claudia Ritter",
     "TR": "Thorsten Ritter",
-    "LR": "Linda Ritter"
+    "LR": "Linda Ritter",
+    "ex": ""
 }
 
 
