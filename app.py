@@ -22,41 +22,44 @@ lehrerAbkuerzungen = {
 # Laedt die Dateien aus dem Stundenplan (von Patrick, aber ausschließlich die Veranstaltungen die nicht in der Nimbuscloud eingetragen sind) und wandelt diese in das von uns verwendete Schema um
 def Stundenplan ():
     response = requests.post('https://anmeldung.tanzhaus-muelheim.de/saalbelegung/', data={'apikey': sys.argv[1] })
-
     response = response.text
     response = json.loads(response)
-
-    print(response)
 
 
     if response != None:
         for i in range(len(response)):
-            response[i].pop("Datum")
+            try:
+                response[i].pop("Datum")
 
-            response[i].pop("Grund")
+                response[i].pop("Grund")
 
-            response[i]["Name"] = response[i]["Bem"]
-            
-            response[i].pop("Bem")
+                response[i]["Name"] = response[i]["Bem"]
+                
+                response[i].pop("Bem")
 
-            response[i]["Saal"] = int(response[i]["Saal"])
+                response[i]["Saal"] = int(response[i]["Saal"])
 
-            if response[i]["exLehrer"] != "":
-                response[i]["Lehrer"] = response[i]["exLehrer"].replace('+', ' ')
-                response[i].pop("exLehrer")
-            else: 
-                response[i].pop("exLehrer")
-                response[i]["Lehrer"] = lehrerAbkuerzungen[response[i]["Lehrer"]]
-            
-            if response[i]["exBez"] != "":
-                response[i]["Name"] = response[i]["exBez"]
-                response[i].pop("exBez")
-            else: 
-                response[i].pop("exBez")
+                if response[i]["exLehrer"] != "":
+                    response[i]["Lehrer"] = response[i]["exLehrer"].replace('+', ' ')
+                    response[i].pop("exLehrer")
+                else: 
+                    response[i].pop("exLehrer")
+                
+                if response[i]["exBez"] != "":
+                    response[i]["Name"] = response[i]["exBez"]
+                    response[i].pop("exBez")
+                else: 
+                    response[i].pop("exBez")
 
-            response[i]["Name"] = response[i]["Name"].replace('+', ' ')
+                response[i]["Name"] = response[i]["Name"].replace('+', ' ')
 
-            response[i].pop("Wochentag")
+                response[i].pop("Wochentag")
+            except:
+                response[i]["Von"] = ""
+                response[i]["Bis"] = ""
+                response[i]["Saal"] = ""
+                response[i]["Name"] = ""
+                response[i]["Lehrer"] = ""
 
         response = json.dumps(response)
         response = unquote(response)
