@@ -8,17 +8,6 @@ from urllib.parse import unquote
 import sys
 import re
 
-os.system('clear')
-
-lehrerAbkuerzungen = {
-    "PW": "Paul Warta",
-    "CB": "Christopher Bischoff",
-    "CR": "Claudia Ritter",
-    "TR": "Thorsten Ritter",
-    "LR": "Linda Ritter",
-    "ex": ""
-}
-
 
 # Laedt die Dateien aus dem Stundenplan (von Patrick, aber ausschließlich die Veranstaltungen die nicht in der Nimbuscloud eingetragen sind) und wandelt diese in das von uns verwendete Schema um
 def Stundenplan ():
