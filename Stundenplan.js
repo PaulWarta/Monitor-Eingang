@@ -1,26 +1,26 @@
 
 function getData(saal) {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {
-        createHTML(saal, this.responseText)
-    }
-    xhttp.open("GET", `./stundenplan${saal}.json`, true);
-    xhttp.send();
+  let xhttp = new XMLHttpRequest();
+  xhttp.onload = function () {
+    createHTML(saal, this.responseText)
+  }
+  xhttp.open('GET', `./stundenplan${saal}.json`, true);
+  xhttp.send();
 }
 
 //Sollte die Idee eines durchlaufenden Stundenplans nochmal aufkommen:
 //  in createHTML() in html das styling hinzufügen mit der Höhe aus dem Rückgabewert von calcHeight()
 
 function createHTML (saal, response) {
-    let parent = document.getElementById(`SaalContainer${saal}`);
-    let data = JSON.parse(response);
-    let html = "";
-    for (let i = 0; i < data.length; i++) {
-        if (data[i]["Name"] == '') { data[i]["Name"] = "Privatstunde"} 
-        html = `<div class="belegung ${i + 1}"><h1>${data[i]["Name"]}</h1>\n<div><h2>${data[i]["Von"]} - ${data[i]["Bis"]}</h2>\n<h2>${data[i]["Lehrer"]}</h2></div><p class="von" hidden>${data[i]["Von"]}</p><p class="bis" hidden>${data[i]["Bis"]}</p></div>`
-        parent.innerHTML += html;
-        html = "";
-    }
+  let parent = document.getElementById(`SaalContainer${saal}`);
+  let data = JSON.parse(response);
+  let html = '';
+  for (let i = 0; i < data.length; i++) {
+    if (data[i]['Name'] == '') { data[i]['Name'] = 'Privatstunde'} 
+    html = `<div class="belegung ${i + 1}"><h1>${data[i]['Name']}</h1>\n<div><h2>${data[i]['Von']} - ${data[i]['Bis']}</h2>\n<h2>${data[i]['Lehrer']}</h2></div><p class="von" hidden>${data[i]['Von']}</p><p class="bis" hidden>${data[i]['Bis']}</p></div>`
+    parent.innerHTML += html;
+    html = '';
+  }
 }
 
 // function calcHeight(start) {
@@ -57,49 +57,49 @@ function createHTML (saal, response) {
 
 // fürs testen einfach hours und minutes hinzufügen als Parameter
 function slideUp () {
-    console.log("Test")
-    let now = new Date();
-    // For testing purposes:
-    // now = new Date(now.getFullYear(), now.getMonth(), now.getDay(), hours, minutes, 0)
-    let top = 0;
-    for (i = 1; i <= 5; i++) {
-        let stundenplanoffset = 0;
-        document.querySelectorAll('#Spalte' + i + ' .bis').forEach(element => {
-            bis = element.innerText
-            stunde = parseInt(bis.slice(0, 2));
-            minute = parseInt(bis.slice(3, 5));
-            bis = new Date(now.getFullYear(), now.getMonth(), now.getDate(), stunde, minute, 0)
-            if ( bis.getTime() - now.getTime() <= 0) {
-                stundenplanoffset += 145;
-            }
-        })
-        document.getElementById('SaalContainer' + i).style.opacity = 1;
-        document.getElementById('SaalContainer' + i).style.top = `${-stundenplanoffset}px`;
+  console.log('Test')
+  let now = new Date();
+  // For testing purposes:
+  // now = new Date(now.getFullYear(), now.getMonth(), now.getDay(), hours, minutes, 0)
+  let top = 0;
+  for (i = 1; i <= 5; i++) {
+    let stundenplanoffset = 0;
+    document.querySelectorAll('#Spalte' + i + ' .bis').forEach(element => {
+      bis = element.innerText
+      stunde = parseInt(bis.slice(0, 2));
+      minute = parseInt(bis.slice(3, 5));
+      bis = new Date(now.getFullYear(), now.getMonth(), now.getDate(), stunde, minute, 0)
+      if ( bis.getTime() - now.getTime() <= 0) {
+        stundenplanoffset += 145;
+      }
+    })
+    document.getElementById('SaalContainer' + i).style.opacity = 1;
+    document.getElementById('SaalContainer' + i).style.top = `${-stundenplanoffset}px`;
 
-        console.log(i);
-        element1 = document.querySelector('#Spalte' + i + ' .von');
-        if (element1 === null) {
-            continue;
-        }
-        von = element1.innerText;
-        stunde = parseInt(von.slice(0, 2));
-        minute = parseInt(von.slice(3, 5));
-        von = new Date(now.getFullYear(), now.getMonth(), now.getDate(), stunde, minute, 0)
-        if ( von.getTime() - now.getTime() >= 1800000) {
-            document.getElementById('SaalContainer' + i).style.opacity = 0;
-            document.getElementById('SaalContainer' + i).style.top = '200px';
-        }
+    console.log(i);
+    element1 = document.querySelector('#Spalte' + i + ' .von');
+    if (element1 === null) {
+      continue;
     }
+    von = element1.innerText;
+    stunde = parseInt(von.slice(0, 2));
+    minute = parseInt(von.slice(3, 5));
+    von = new Date(now.getFullYear(), now.getMonth(), now.getDate(), stunde, minute, 0)
+    if ( von.getTime() - now.getTime() >= 1800000) {
+      document.getElementById('SaalContainer' + i).style.opacity = 0;
+      document.getElementById('SaalContainer' + i).style.top = '200px';
+    }
+  }
 }
 
 setInterval(() => {
-    slideUp()
+  slideUp()
 }, 1500);
 
 
 
-getData("1")
-getData("2")
-getData("3")
-getData("4")
-getData("5")
+getData('1')
+getData('2')
+getData('3')
+getData('4')
+getData('5')
