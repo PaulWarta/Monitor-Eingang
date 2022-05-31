@@ -29,4 +29,5 @@ jobs:
           git config --global user.name "Paul Warta"
           git add .
           git commit -m "Renamed files in ./Images/*/*.png to ./Images/*/Image.png" -a
+          git status
           git push
