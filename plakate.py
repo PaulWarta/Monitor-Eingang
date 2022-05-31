@@ -1,9 +1,10 @@
 import json
-import os
+import re
+import subprocess
 
-files = os.listdir('./Plakate')
 
-files.remove("Plakate.json")
+files = re.findall('Plakate/.*', subprocess.getoutput('git ls-tree -r --name-only HEAD'))
+files.pop(files.index('Plakate/Plakate.json'))
 
 print(files)
 
