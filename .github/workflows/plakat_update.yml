@@ -32,15 +32,12 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: python plakate.py
-          
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-      
 
       - name: Merge Branches 
         run: |
-          git config --global user.email "paul.warta@icloud.com"
-          git config --global user.name "Paul Warta"
-          git checkout master
-          git add .
-          git commit -m "Automatisiert Veränderung der Plakate.json Datei" -a
+            git checkout master
+            git config --global user.email "paul.warta@icloud.com"
+            git config --global user.name "Paul Warta"
+            git status
+            git add .
+            git commit -m "Automatisiert Veränderung der Plakate.json Datei" -a
