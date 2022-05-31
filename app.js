@@ -336,8 +336,8 @@ const main = async () => {
     let stundenplanPatrick = await StundenplanPatrick();
 
     let unsortiert = checkDoubles(stundenplanNimbuscloud, stundenplanPatrick);
+    // eslint-disable-next-line no-unused-vars
     let stundenplan = sortStundenplan(unsortiert);
-    console.log(stundenplan);
   } catch (e) {
     console.log(e);
   }
