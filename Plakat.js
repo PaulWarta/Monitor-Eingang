@@ -36,7 +36,7 @@ function slider () {
   }, 2100);
     
   id = id + 1;
-  if (id === files.length) {
+  if (id === files.length) {
     id = 0;
   }
   setTimeout(() => {
