@@ -8,7 +8,7 @@ on:
       - 'Images/**/**.png'
     
   workflow_dispatch:
-    
+      
 jobs:
   main:
     runs-on: ubuntu-latest
