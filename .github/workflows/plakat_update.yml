@@ -38,4 +38,5 @@ jobs:
 
       - name: Merge Branches 
         run: |
+          git checkout Isa_Image
           git status
