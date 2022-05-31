@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: "Test Output"
-      - run: echo Test
+      - name: Test Output
+        run: echo Test
 
 
       # - uses: actions/checkout@v3
