@@ -39,4 +39,5 @@ jobs:
       - name: Merge Branches 
         run: |
           git checkout master
-          git branch
+          git add .
+          git commit -m "Automatisiert Veränderung der Plakate.json Datei" -a
