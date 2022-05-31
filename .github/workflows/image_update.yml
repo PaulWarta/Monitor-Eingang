@@ -1,1 +1,32 @@
+name: Image Name Updater
+
+on:
+  push:
+    branches: master
+    paths: 'Images/**/**.png'
+    
+  workflow_dispatch:
+    
+jobs:
+  main:
+    name: Rename files
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Rename Images
+      - continue-on-error: true
+      - run: |
+          mv ./Images/Fenster_rechts/*.png ./Images/Fenster_rechts/Image.png
+          mv ./Images/Fenster_links/*.png ./Images/Fenster_links/Image.png
+      
+      
+      - name: Push to GitHub
+      - run: |
+          git add .
+          git commit -m "Renamed files in ./Images/*/*.png to ./Images/*/Image.png" -a
+          git push origin master
+    
+      
+      
 
