@@ -38,6 +38,8 @@ jobs:
 
       - name: Merge Branches 
         run: |
+          git config --global user.email "paul.warta@icloud.com"
+          git config --global user.name "Paul Warta"
           git checkout master
           git add .
           git commit -m "Automatisiert Veränderung der Plakate.json Datei" -a
