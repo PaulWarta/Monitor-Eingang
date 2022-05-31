@@ -18,7 +18,9 @@ jobs:
 
       - name: Rename Images
         continue-on-error: true
-        run: mv ./Images/Fenster_Links/*.png ./Images/Fenster_Links/Image.png
+        run: |
+          mv ./Images/Fenster_Links/*.png ./Images/Fenster_Links/Image.png
+          mv ./Images/Fenster_Rechts/*.png ./Images/Fenster_Rechts/Image.png
       
       - name: Push to GitHub
         run: |
