@@ -40,4 +40,4 @@ jobs:
         run: |
           git checkout master
           git merge --no-ff create-pull-request/patch
-          git push origin Isa_Image
+          git push origin
