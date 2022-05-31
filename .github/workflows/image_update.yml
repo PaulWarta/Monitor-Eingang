@@ -14,23 +14,26 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+      - name: "Test Output"
+      - run: echo Test
 
-      - name: Rename Images
-      - continue-on-error: true
-      - run: |
-          mv ./Images/Fenster_rechts/*.png ./Images/Fenster_rechts/Image.png
-          mv ./Images/Fenster_links/*.png ./Images/Fenster_links/Image.png
+
+      # - uses: actions/checkout@v3
+
+      # - name: Rename Images
+      # - continue-on-error: true
+      # - run: |
+      #     mv ./Images/Fenster_rechts/*.png ./Images/Fenster_rechts/Image.png
+      #     mv ./Images/Fenster_links/*.png ./Images/Fenster_links/Image.png
       
-      
-      - name: Push to GitHub
-      - run: |
-          git checkout master
-          git --global user.email "paul.warta@icloud.com"
-          git --global user.name "Paul Warta"
-          git add .
-          git commit -m "Renamed files in ./Images/*/*.png to ./Images/*/Image.png" -a
-          git push origin master
+      # - name: Push to GitHub
+      # - run: |
+      #     git checkout master
+      #     git --global user.email "paul.warta@icloud.com"
+      #     git --global user.name "Paul Warta"
+      #     git add .
+      #     git commit -m "Renamed files in ./Images/*/*.png to ./Images/*/Image.png" -a
+      #     git push origin master
     
       
       
