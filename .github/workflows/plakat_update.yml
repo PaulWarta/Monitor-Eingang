@@ -6,8 +6,10 @@ name: Plakat Updater
 on:
 
   push:
-    branches: master
-    paths: 'Plakate/**'
+    branches: 
+      - "master"
+    paths: 
+      - 'Plakate/**'
     
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

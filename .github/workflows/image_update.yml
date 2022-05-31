@@ -2,8 +2,10 @@ name: Image Name Updater
 
 on:
   push:
-    branches: master
-    paths: 'Images/**/**.png'
+    branches: 
+      - "master"
+    paths: 
+      - 'Images/**/**.png'
     
   workflow_dispatch:
     
@@ -13,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v2
       - name: Rename Images
+      - uses: actions/checkout@v3
       - continue-on-error: true
       - run: |
           mv ./Images/Fenster_rechts/*.png ./Images/Fenster_rechts/Image.png
@@ -23,6 +25,9 @@ jobs:
       
       - name: Push to GitHub
       - run: |
+          git checkout master
+          git --global user.email "paul.warta@icloud.com"
+          git --global user.name "Paul Warta"
           git add .
           git commit -m "Renamed files in ./Images/*/*.png to ./Images/*/Image.png" -a
           git push origin master
