@@ -43,4 +43,5 @@ jobs:
             git status
             git add .
             git commit -m "Automatisiert Veränderung der Plakate.json Datei" -a
+            git status
             git push origin master
