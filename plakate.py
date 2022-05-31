@@ -8,6 +8,6 @@ files.pop(files.index('Plakate/Plakate.json'))
 
 print(files)
 
-f = open("Plakate/Plakate.json", "w")
-f.write(json.dumps(files))
+# f = open("Plakate/Plakate.json", "w")
+# f.write(json.dumps(files))
 
