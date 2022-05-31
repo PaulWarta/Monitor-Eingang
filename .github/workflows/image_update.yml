@@ -14,8 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Rename Images
       - uses: actions/checkout@v3
+      
+      - name: Rename Images
       - continue-on-error: true
       - run: |
           mv ./Images/Fenster_rechts/*.png ./Images/Fenster_rechts/Image.png
