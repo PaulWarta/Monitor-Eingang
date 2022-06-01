@@ -203,5 +203,6 @@ main {
 #Lageplan > img {
     height: 360px;
     width: 428px;
+    border-radius: 20px;
 }
 
